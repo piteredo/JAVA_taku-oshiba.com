@@ -27,11 +27,14 @@
 
 
   <div class="updates">
-    <h2>UPDATES</h2>
+    <div class="header">
+      <h2>UPDATES</h2>
+      <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${biographyUpdatedate}"></time></p>
+    </div>
     <ul>
       <li th:each="b: ${biography}">
         <article>
-          <div class="header">
+          <div>
             <h3 th:text="${b.janame}"></h3>
             <p class="updated-date">
               <i class="fas fa-sync"></i>
@@ -40,7 +43,7 @@
           </div>
           <p th:text="${b.jatextplane}" class="sentence"></p>
           <p class="footer_nav">
-            ...&nbsp;<a href="design.html">VIEW ALL&nbsp;<i class="fas fa-caret-square-right"></i></a>
+             . . . .&nbsp;<a href="design.html">VIEW ALL&nbsp;<i class="fas fa-caret-square-right"></i></a>
           </p>
           <p>
             <img th:src="|https://taku-oshiba.com/img/bio/${photo.src}.jpg|" alt="${photo.src}">

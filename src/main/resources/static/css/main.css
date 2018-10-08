@@ -1,13 +1,15 @@
 @charset "utf-8";
 
 
+
 /*----------------------------- BASE -----------------------------*/
+
 
 html {
   font-size: 62.5%; /*10px(root)*/
   overflow-y: scroll;
 }
-
+ 
 img,
 iframe {
   width: 100%;
@@ -21,17 +23,12 @@ body {
   font-size: 1.4rem; /*basic(14px)*/
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
   text-align: justify;
-  margin: 0 5%;
 }
-@media screen and (min-width: 960px) {
-  body {
-    width: 864px; /*960px*90%*/
-    margin: 0 auto;
-  }
-}
+
 
 
 /*----------------------------- HEADER -----------------------------*/
+
 
 header {
   position: fixed;
@@ -52,8 +49,10 @@ header {
 @media screen and (min-width: 960px) {
   header {
     left: auto;
-    width: 864px; /*=bodyWidth*/
+    width: 864px; /*bodyWidth*/
+    width: 100%;
     padding: 19.2px 0; /*960px*2%*/
+    justify-content: center;
   }
 }
 
@@ -72,16 +71,19 @@ header .logo {
 @media screen and (min-width: 960px) {
   header .logo {
     width: 302.4px; /*960px*90%*35%*/
+    margin-right: 28.8px;
   }
 }
 
 
+
 /*----------------------------- HEADER.NAV / HAMBURGUR_MENU -----------------------------*/
 
+
 header nav {
+  width: auto;
   font-family: 'Ubuntu Condensed', sans-serif;
   font-size: 3rem;
-  font-weight: bold; /*効いてない？？*/
   
   /*border: 1px solid #000; box-sizing: border-box; --- FOR_DEBUG */
 }
@@ -97,6 +99,7 @@ header nav {
   }
 }
 
+
 header nav li {
 	margin-bottom: 25%;
 }
@@ -106,31 +109,31 @@ header nav li {
   }
 }
 
+
 header nav #ham-menu-cb {
   display: none;
 }
 
+
 header nav #ham-menu-icon {
   display: none;
   
-  cursor: pointer;    
   position: relative;
-  z-index: 1000;
+  cursor: pointer;
+  border: solid 1px #000;
   width: 55.224px; /*logo700:160=241.605:Xpx*/
   height: 55.224px;
-  /*padding: 27.612px 0;*/
-  /*margin: -1% 2% 0 18%;*/
-  /*width: 4.7rem;*/
-  border: solid 1px #000;
-  text-align: center;
-  font-size: 3rem;
-  line-height: 55.224px;
+  line-height: 55.224px; /*vertical*/
+  text-align: center;  
+  font-size: 3rem; 
+  z-index: 1000; 
 }
 @media screen and (max-width: 767px) {
   header nav #ham-menu-icon {
     display: block;    
   }
 }
+
 
 header nav ul {
   display: flex;
@@ -143,14 +146,15 @@ header nav ul {
   
   header nav div.ham-menu {
     opacity: 0;
-    pointer-events: none;
     display: block;
     position: absolute;
-    z-index: 1000;
-    left: 45%;
+    pointer-events: none;
     top: 70.564px; /*55.224+15.34*/
+    left: 45%;
+    z-index: 1000;
   }
 }
+
 
 header nav #ham-menu-bg {
   opacity: 0;
@@ -179,109 +183,115 @@ header nav #ham-menu-cb:checked ~ #ham-menu-bg {
 
 
 
+/*----------------------------- MAIN.ALL_PAGES -----------------------------*/
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media screen and (max-width:767px){
-	
-
-	header nav li {
-		/*font-size: 3rem;
-		font-family: 'Ubuntu Condensed', sans-serif;
-		margin-bottom: 30%;
-		text-align: center;*/
-	}
-
-	header nav li:last-child {
-		margin-bottom: 0;
-	}
-
-	main {
-		margin-top: 107.38px;
-	}
-
-	main .updates ul li {
-		width: 100%;
-		border: solid 1px #AAA;
-		box-sizing: border-box;
-		padding: 2%;
-		margin-bottom: 4%;
-	}
-
-
+main {
+  width: auto;
+  margin: 191.5px 5% 114.9px; /*766*25%*/ /*766*15%*/
+}
+@media screen and (min-width: 768px) {
+  main {
+    margin-top: 25%;
+    margin-bottom: 15%;
+  }
+}
+@media screen and (min-width: 960px) {
+  main {
+    width: 864px; /*bodyWidth*/
+    margin: 240px auto 144px; /*960*25%*/ /*960*15%*/
+  }
 }
 
+
+main .header h2 {
+  font-size: 3.2rem;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-weight: bold; /*iphone効かないかも？*/
+  margin-bottom: 6px;
+}
+
+main .header .updated-date .fas {
+  font-size: 1.0rem;
+  letter-spacing: 0.3rem;
+}
+
+main .header .updated-date {
+  font-size: 1.1rem;
+  color: #777;
+}
+
+main .header {
+  margin-bottom: 26px;
+}
+
+
+
+/*----------------------------- MAIN.INDEX -----------------------------*/
+
+
+main#index .updates li {
+  width: 100%;
+  border: solid 1px #AAA;
+  box-sizing: border-box;  
+  padding: 16px;
+  
+  margin-top: 4%; /*！上向きマージン(footerとの距離維持のため)*/
+}
 @media screen and (min-width:768px){
-
-	header nav {
-		/*width: 58%;
-		height: auto;
-		margin-left: 3%;*/
-	}
-
-	header nav ul {
-		/*display: flex;
-		justify-content: space-between;
-		align-items: flex-end; /*きいてない*/
-	}
-
-	header nav ul li {
-		/*font-size: 1.8rem;
-		font-weight: bold;
-		font-family: 'Ubuntu Condensed', sans-serif;
-		display: block;*/
-	}
-
-	main {
-		margin-top: 15%;
-	}
-
-	main .updates ul li {
-		width: 48%;
-		border: solid 1px #AAA;
-		box-sizing: border-box;
-		padding: 2%;
-		margin-bottom: 4%;
-	}
+  main#index .updates li {
+    width: 48%;
+  }
 }
 
-@media screen and (max-width:959px){
-	
 
-	
+main#index .updates li:first-child {  
+  margin-top: 0; /*１カラムのときは １番目の上向きマージンのみキャンセル*/
 }
-@media screen and (min-width:960px){
-	
-
-	
-
-	
-
-
+@media screen and (min-width:768px){
+  main#index .updates li:nth-child(2) {  
+    margin-top: 0; /*２カラムのときは２番目もキャンセルする*/
+  }
 }
+
+
+main#index .updates h3 {
+	font-size: 2rem;
+	font-weight: bold;
+	
+	margin-bottom: 10px;
+}
+
+main#index .updates .updated-date {
+	/*same as other update_dates*/
+	font-size: 1.1rem;
+	color: #777;
+	
+	margin-bottom: 14px;
+}
+
+main#index .updates .sentence {
+	display: block;
+	overflow: hidden;
+	line-height: 1.8;
+	height: 7.2em; /* 1em*行数(4)*line-height */
+}
+
+main#index .updates .footer_nav {
+	line-height: 1.8;
+	
+	margin-bottom: 14px;
+}
+
+
+
+
+
+
+
+
+
+
 
 main article.movie {
 	border: solid 1px #AAA;
@@ -331,10 +341,6 @@ main#biography ul li img {
 	margin-right: 5%;
 }
 
-main .updates {
-	margin-bottom: 10%;
-}
-
 main .updates ul {
 	display: flex;
 	flex-wrap: wrap;
@@ -342,12 +348,6 @@ main .updates ul {
 	align-content: flex-start;
 }
 
-main .updates ul li article p.sentence {
-	display: block;
-	overflow: hidden;
-	height: 6.4em; /* 2em（行）x line-heightの1.8 */
-	line-height: 1.6;
-}
 
 main .updates ul li img {
 	height: 300px;
@@ -355,49 +355,16 @@ main .updates ul li img {
 	object-position: center 30%;
 }
 
-main .updates .updated-date {
-	font-size: 1.1rem;
-	color: #777;
-}
-
-main#index .updates h2 {
-	font-family: 'Ubuntu Condensed', sans-serif;
-	font-size: 1.8rem;
-	font-weight: bold;
-	margin-bottom: 2%;
-}
-
-main .updates h3 {
-	font-size: 1.8rem;
-	font-weight: bold;
-	margin-bottom: 3%;
-}
-
-main .updates .footer_nav {
-	margin-bottom: 5%;
-}
 
 
-main article .header {
-	margin-bottom: 3%;
-}
 
-main article h2 {
-	font-size: 3.4rem;
-	font-family: 'Ubuntu Condensed', sans-serif;
-	font-weight: bold;
-	margin-bottom: 1%;
-}
 
-main article .updated-date {
-	font-size: 1.1rem;
-	color: #777;
-}
 
-main article .updated-date .fas {
-	font-size: 1.0rem;
-	letter-spacing: 0.3rem;
-}
+
+
+
+
+
 
 main#biography .slider {
 	margin-bottom: 5%;
@@ -416,7 +383,7 @@ main#biography section:last-child {
 }
 
 .sentence {
-	line-height: 1.6; /* 160% of font size */
+	/*line-height: 1.6; /* 160% of font size */
 }
 
 
@@ -431,7 +398,7 @@ main#design li img {
 	width: 80px;
 	height: 80px;
 	object-fit: cover;
-	margin-bottom: 10%;
+	/*margin-bottom: 10%;*/
 
 	border: solid 1px #AAA;
 	box-sizing: border-box;
@@ -449,13 +416,13 @@ main#schedule h3 {
 	margin-bottom: 2%;
 }
 
-main#schedule p,
+main#schedule section p,
 main#schedule ul li {
-	margin-bottom: 1.5%;
+	/*margin-bottom: 1.5%;*/
 }
 
 main#schedule section {
-	margin-bottom: 10%;
+	/*margin-bottom: 10%;*/
 }
 
 @media screen and (max-width:479px) {
@@ -510,7 +477,7 @@ main#discography .yen-letter {
 }
 
 main#discography section {
-	margin-bottom: 10%;
+	/*margin-bottom: 10%;*/
 }
 
 main#discography .fa-amazon {
@@ -524,45 +491,63 @@ main#discography .fa-amazon {
 
 
 
+
+/*----------------------------- FOOTER -----------------------------*/
+
+
 footer {
-	box-sizing: border-box;
-	padding: 5% 5% 2%;
-	margin-top: 5%;
-	background-color: #333;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40px 5% 20px;
+  background-color: #222;
 }
 
-footer nav .main {
-	margin-bottom: 7%;
+footer nav {
+  margin: 0 auto;
+  width: auto;
+}
+@media screen and (min-width: 960px) {
+  footer nav {
+    width: 864px;
+  }
 }
 
 footer nav .main li {
-	font-size: 1.6rem;
-	font-weight: bold;
-	margin-bottom: 6%;
+  font-size: 1.6rem;
+  font-weight: bold; /*iphone効かないかも？*/
+  margin-bottom: 30px;
 }
 
 footer nav .main li:last-child {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
-footer nav .icons {
-	display: flex;
-	justify-content: flex-start;
-	margin-bottom: 5%;
+footer nav .main {
+  margin-bottom: 40px;
 }
 
 footer nav .icons li {
-	font-size: 2.0rem;
-	margin-right: 6%;
+  font-size: 2.0rem;
+  margin-right: 40px;
 }
 
 footer nav .icons li:last-child {
-	margin-right: 0;
+  margin-right: 0;
+}
+
+footer nav .icons {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 32px;
 }
 
 footer small {
-	display: block;
-	font-size: 1rem;
-	text-align: center;
-	color: #FFF;
+  display: block;
+  font-size: 1rem;
+  text-align: center;
+  color: #999;
 }
+
+
+
+/*----------------------------- EOF -----------------------------*/
