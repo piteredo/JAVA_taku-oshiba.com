@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+  
+  	<header th:replace="/header.html::header('noindex, nofollow')"></header>
+    
+    <main id="discography">
+	  <article>
+        <div class="header">
+          <h2>DISCOGRAPHY</h2>
+          <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${updateDate}"></time></p>
+        </div>
+        <section th:each="disc : ${discographyList}">
+          <h3 th:text="${disc.title}"></h3>
+          <p><img th:src="|https://taku-oshiba.com/img/design/${disc.imgurl}.jpg|" th:alt="${disc.imgurl}"></p>
+          <div class="main">
+            <ul>
+              <li th:each="performerid : ${disc.performeridlist}" th:text="|${playerList[performerid].name}&nbsp;(${playerList[performerid].instrument})|"></li>
+            </ul>
+            <p th:utext="${disc.info}"></p>
+            <p th:utext="${disc.songlist}"></p>
+            <a th:href="|https://www.amazon.co.jp/dp/${disc.amazonurl}|" target="_blank"><i class="fab fa-amazon"></i></a>
+          </div>
+        </section>
+      </article>
+    </main>
+    
+    <footer th:replace="/footer.html::footer"></footer>
+    
+</html>

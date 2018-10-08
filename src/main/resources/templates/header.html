@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:fragment="header(meta_content)">
+  <title>Taku Oshiba, Guitarist | ギタリスト大柴拓 公式サイト</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <meta name="description" content="Guitarist, Composer, Graphic designer | ギタリスト・作曲家・グラフィックデザイナー">
+  <meta name="robots" th:content="${meta_content}">
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/hamburger_menu.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
+
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon-180x180.png">
+  
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+  <script>
+    $(function() {
+      $('.slider').slick({
+        autoplay: false,
+        arrows: true,
+        slidesToShow: 2,
+        centerMode: true,
+        initialSlide: 1,
+        prevArrow:'<div class="prev"><i class="fas fa-angle-left"></i></div>',
+        nextArrow:'<div class="next"><i class="fas fa-angle-right"></i></div>'
+      });
+      
+      $('.modal').modaal({
+    	  type: "image"
+      });
+      
+      $(function() {
+   	    $('img.lazy').lazyload();
+   	  });
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <h1><a href="/"><img src="img/header_title.png" alt="TAKU OSHIBA Guitar, Composition, Graphic design"></a></h1>
+    </div>
+
+    <nav>
+      <input id="ham-menu-cb" type="checkbox" value="off">
+      <label id="ham-menu-icon" for="ham-menu-cb"><i class="fas fa-bars"></i></label>
+      <label id="ham-menu-bg" for="ham-menu-cb"></label>
+      <div class="ham-menu">
+        <ul>
+          <li><a href="/biography">BIO</a></li>
+          <li><a href="/schedule">SCHEDULE</a></li>
+          <li><a href="/design">DESIGN</a></li>
+          <li><a href="https://taku-oshiba.com/blog/">BLOG</a></li>
+          <li><a href="/discography">DISCO</a></li>
+          <li><a href="https://twitter.com/piteredo" target="_blank"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="https://www.youtube.com/user/studiopite3" target="_blank"><i class="fab fa-youtube"></i></a></li>
+          <li><a href="https://github.com/piteredo" target="_blank"><i class="fab fa-github"></i></a></li>
+          <li><a href="mailto:piteredo@gmail.com?subject=(大柴拓サイトよりお問い合わせ)" target="_blank"><i class="far fa-envelope"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>

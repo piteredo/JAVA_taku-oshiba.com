@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+  	
+  	<header th:replace="/header.html::header('noindex, nofollow')"></header>
+    
+    <main id="design">
+      <article>
+        <div class="header">
+          <h2>DESIGN</h2>
+          <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${updateDate}"></time></p>
+        </div>
+        <section>
+          <ul>
+            <li th:each="design : ${designList}" id="modal">
+              <a th:href="|https://taku-oshiba.com/img/design/${design.src}.jpg|" data-group="modal" class="modal">
+                <img th:data-original="|https://taku-oshiba.com/img/design/${design.src}.jpg|" src="https://taku-oshiba.com/img/dummy_loader80x80.gif" th:alt="${design.src}" class="lazy">
+              </a>
+            </li>
+          </ul>
+        </section>
+      </article>
+    </main>
+    
+    <footer th:replace="/footer.html::footer"></footer>
+    
+</html>

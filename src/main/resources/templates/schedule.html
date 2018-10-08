@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+  
+  	<header th:replace="/header.html::header('noindex, nofollow')"></header>
+  
+    <main id="schedule">
+      <article>
+        <div class="header">
+          <h2>SCHEDULE</h2>
+          <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${updateDate}"></time></p>
+        </div>
+
+		<section th:each="schedule : ${scheduleList}">
+		  <p class="date"><time th:text="|${schedule.date} ${schedule.day}|"></time></p>
+		  <h3 th:text="${schedule.title}"></h3>
+		  <p th:with="i=${schedule.placeid}"><span th:text="|${placeList[i].city}&nbsp;|"></span><a th:href="${placeList[i].url}" th:text="${placeList[i].name}"  target="_blank"></a></p>
+		  <p th:if="${schedule.ispickup}" th:text="|${schedule.starttime}-&nbsp;(${schedule.opentime}open)&nbsp;&nbsp;${schedule.price}|"></p>
+		  <ul>
+		    <li th:each="performerid : ${schedule.performeridlist}" th:with="player=${playerList[performerid]}" th:switch="${player.url}">
+		    	<p th:case="none" th:text="|${player.name} (${player.instrument})|"></p>
+		    	<p th:case="*"><a th:href="${player.url}" th:text="${player.name}" target="_blank"></a><span th:text="|&nbsp;(${player.instrument})|"></span></p>
+		    </li>
+		  </ul>
+		  <p th:switch="${schedule.imgurl}">
+		  	<span th:case="none"></span>
+		  	<img th:case="*" th:src="|https://taku-oshiba.com/img/design/${schedule.imgurl}|">
+		  </p>
+		</section>
+
+	  </article>
+    </main>
+    
+    <footer th:replace="/footer.html::footer"></footer>
+    
+</html>

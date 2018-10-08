@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+  
+  	<header th:replace="/header.html::header('noindex, nofollow')"></header>
+    
+    <main id="biography">
+      <article>
+        <div class="header">
+          <h2>BIOGRAPHY</h2>
+          <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${updateDate}"></time></p>
+        </div>
+        <ul class="slider">
+          <li th:each="photo : ${photoList}"><a th:href="|https://taku-oshiba.com/img/bio/${photo.src}.jpg|" data-group="modal" class="modal"><img th:src="|https://taku-oshiba.com/img/bio/${photo.src}.jpg|" alt="Taku Oshiba"></a></li>
+        </ul>
+        <div>
+          <section>
+            <p class="sentence">
+              <span th:text="|${biography.janame}&nbsp;|" class="artist-name"></span>
+              <span th:utext="${biography.jatext}"></span>
+            </p>
+          </section>
+
+          <section>
+            <p class="sentence">
+              <span th:text="${biography.enname}" class="artist-name"></span>
+              <span th:utext="${biography.entext}"></span>
+            </p>
+          </section>
+        </div>
+      </article>
+    </main>
+    
+    <footer th:replace="/footer.html::footer"></footer>
+    
+</html>
