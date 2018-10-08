@@ -13,12 +13,12 @@
           <h3 th:text="${disc.title}"></h3>
           <p><img th:src="|https://taku-oshiba.com/img/design/${disc.imgurl}.jpg|" th:alt="${disc.imgurl}"></p>
           <div class="main">
+            <a th:href="|https://www.amazon.co.jp/dp/${disc.amazonurl}|" target="_blank"><i class="fab fa-amazon"></i></a>
             <ul>
               <li th:each="performerid : ${disc.performeridlist}" th:text="|${playerList[performerid].name}&nbsp;(${playerList[performerid].instrument})|"></li>
             </ul>
             <p th:utext="${disc.info}"></p>
             <p th:utext="${disc.songlist}"></p>
-            <a th:href="|https://www.amazon.co.jp/dp/${disc.amazonurl}|" target="_blank"><i class="fab fa-amazon"></i></a>
           </div>
         </section>
       </article>

@@ -230,6 +230,41 @@ main .header {
 /*----------------------------- MAIN.INDEX -----------------------------*/
 
 
+main#index .movie div {
+	border: solid 1px #AAA;
+	box-sizing: border-box;
+	padding: 16px;
+	margin-bottom: 4%;
+}
+
+main#index .movie div:last-child {
+	margin-bottom: 0;
+}
+
+main#index .movie {
+	margin-bottom: 12%;
+}
+
+main#index .slider {
+	margin-bottom: 10px;
+}
+
+main#index .design .footer_nav {
+	position: relative;
+	text-align: right;
+}
+
+main#index .design {
+	margin-bottom: 12%;
+}
+
+main#index .updates ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
 main#index .updates li {
   width: 100%;
   border: solid 1px #AAA;
@@ -256,65 +291,48 @@ main#index .updates li:first-child {
 
 
 main#index .updates h3 {
-	font-size: 2rem;
-	font-weight: bold;
-	
-	margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: bold;	
+  margin-bottom: 10px;
 }
 
 main#index .updates .updated-date {
-	/*same as other update_dates*/
-	font-size: 1.1rem;
-	color: #777;
-	
-	margin-bottom: 14px;
+  /*same as other update_dates*/
+  font-size: 1.1rem;
+  color: #777;	
+  margin-bottom: 14px;
 }
 
 main#index .updates .sentence {
-	display: block;
-	overflow: hidden;
-	line-height: 1.8;
-	height: 7.2em; /* 1em*行数(4)*line-height */
+  display: block;
+  overflow: hidden;
+  line-height: 1.8;
+  height: 7.2em; /* 1em*行数(4)*line-height */
 }
 
 main#index .updates .footer_nav {
-	line-height: 1.8;
-	
-	margin-bottom: 14px;
+  line-height: 1.8;	
+  margin-bottom: 14px;
+}
+
+main#index .updates img {
+  height: 300px;
+  object-fit: cover;
+  object-position: center 30%;
 }
 
 
 
+/*----------------------------- MAIN.SLIDER (INDEX, BIO) -----------------------------*/
 
 
-
-
-
-
-
-
-main article.movie {
-	border: solid 1px #AAA;
-	box-sizing: border-box;
-	padding: 2%;
-	margin-bottom: 10%;
-}
-
-main .design .footer_nav {
-	position: relative;
-	text-align: right;
-}
-
-main .design {
-	margin-bottom: 10%;
-}
-
-main .design ul li,
-main#biography ul li {
+main#index .slider li,
+main#biography .slider li {
 	height: 300px;
 }
 
-main .slider .prev {
+main#index .slider .prev,
+main#biography .slider .prev {
 	position: absolute;
 	left: -3%;
 	top: 130px;
@@ -322,7 +340,8 @@ main .slider .prev {
 	font-size: 2rem;
 }
 
-main .slider .next {
+main#index .slider .next,
+main#biography .slider .next {
 	position: absolute;
 	right: -3%;
 	top: 130px;
@@ -330,8 +349,8 @@ main .slider .next {
 	font-size: 2rem;
 }
 
-main .design img,
-main#biography ul li img {
+main#index .slider img,
+main#biography .slider img {
 	border: solid 1px #AAA;
 	box-sizing: border-box;
 	padding: 2%;
@@ -341,154 +360,136 @@ main#biography ul li img {
 	margin-right: 5%;
 }
 
-main .updates ul {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-content: flex-start;
-}
 
 
-main .updates ul li img {
-	height: 300px;
-	object-fit: cover;
-	object-position: center 30%;
-}
-
-
-
-
-
-
-
-
-
-
+/*----------------------------- MAIN.BIOGRAPHY -----------------------------*/
 
 
 main#biography .slider {
-	margin-bottom: 5%;
-}
-main#biography .artist-name {
-	font-weight: bold;
+  margin-bottom: 60px;
 }
 
 main#biography section:first-child {
-	border-bottom: solid 1px #CCC;
-	padding-bottom: 7%;
+  border-bottom: solid 1px #CCC;
+  padding-bottom: 60px;
 }
 
 main#biography section:last-child {
-	padding-top: 4%;
+  padding-top: 45px;
 }
 
-.sentence {
-	/*line-height: 1.6; /* 160% of font size */
+main#biography .sentence {
+  line-height: 1.6;
+}
+
+main#biography .artist-name {
+  font-weight: bold;
 }
 
 
 
-main#design ul {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-}
-
-main#design li img {
-	width: 80px;
-	height: 80px;
-	object-fit: cover;
-	/*margin-bottom: 10%;*/
-
-	border: solid 1px #AAA;
-	box-sizing: border-box;
-	padding: 5%;
-}
+/*----------------------------- MAIN.SCHEDULE -----------------------------*/
 
 
 main#schedule .date {
-	font-size: 1.8rem;
+  font-size: 1.8rem;
 }
 
 main#schedule h3 {
-	font-size: 1.8rem;
-	font-weight: bold;
-	margin-bottom: 2%;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 13px;
 }
 
 main#schedule section p,
 main#schedule ul li {
-	/*margin-bottom: 1.5%;*/
+  margin-bottom: 12px;
 }
 
 main#schedule section {
-	/*margin-bottom: 10%;*/
+  margin-bottom: 50px;
 }
 
-@media screen and (max-width:479px) {
-	main#schedule img,
-	main#discography img {
-		border: solid 1px #AAA;
-		box-sizing: border-box;
-		padding: 1%;
-		width: 100%;
-	}
+main#schedule section:last-child {
+  margin-bottom: 0;
 }
 
+
+
+/*----------------------------- MAIN.LARGE_IMG (SCHE, DISCO) -----------------------------*/
+
+
+main#schedule img,
+main#discography img {
+  border: solid 1px #AAA;
+  box-sizing: border-box;
+  padding: 8px;
+  width: 100%;
+}
 @media screen and (min-width:480px) {
-	main#schedule img,
-	main#discography img {
-		border: solid 1px #AAA;
-		box-sizing: border-box;
-		padding: 1%;
-		width: 460.8px;
-	}
+  main#schedule img,
+  main#discography img {
+    width: 474px;
+  }
 }
 
+
+
+/*----------------------------- MAIN.DESIGN -----------------------------*/
+
+
+main#design ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+main#design li img {
+  border: solid 1px #AAA;
+  box-sizing: border-box;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  padding: 4px;
+}
+
+
+
+/*----------------------------- MAIN.DISCOGRAPHY -----------------------------*/
 
 
 main#discography h3 {
-	font-size: 1.8rem;
-	font-weight: bold;
-	margin-bottom: 2%;
-}
-
-main#discography ul {
-	margin-bottom: 2%;
-}
-
-main#discography section p,
-main#discography ul li,
-main#discography ol li {
-	line-height: 1.8;
-}
-
-main#discography section p {
-	margin-bottom: 1.5%;
-}
-
-main#discography ol {
-	list-style: inside;
-	list-style-type: decimal-leading-zero;
-}
-
-main#discography .yen-letter {
-	font-family: sans-serif;
-}
-
-main#discography section {
-	/*margin-bottom: 10%;*/
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 13px;
 }
 
 main#discography .fa-amazon {
-	font-size: 3rem;
+  font-size: 3rem;
 }
 
+main#discography .fa-amazon,
+main#discography ul,
+main#discography section p {
+  margin-bottom: 12px;
+}
 
+main#discography section p,
+main#discography li {
+  line-height: 2.0;
+}
 
+main#discography section {
+  margin-bottom: 100px;
+}
 
+main#discography section:last-child {
+  margin-bottom: 0;
+}
 
-
+main#discography .yen-letter {
+  font-family: sans-serif;
+}
 
 
 
