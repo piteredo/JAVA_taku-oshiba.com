@@ -32,7 +32,7 @@
       <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${biographyUpdatedate}"></time></p>
     </div>
     <ul>
-      <li th:each="b: ${biography}">
+      <!--<li th:each="b: ${biography}">
         <article>
           <div>
             <h3 th:text="${b.janame}"></h3>
@@ -47,6 +47,24 @@
           </p>
           <p>
             <img th:src="|https://taku-oshiba.com/img/bio/${photo.src}.jpg|" alt="${photo.src}">
+          </p>
+        </article>
+      </li>-->
+      <li th:each="u: ${updates}">
+        <article>
+          <div>
+            <h3 th:text="${u.title}"></h3>
+            <p class="updated-date">
+              <i class="fas fa-sync"></i>
+              <time th:text="${u.updateDate}"></time>
+            </p>
+          </div>
+          <p th:text="${u.text}" class="sentence"></p>
+          <p class="footer_nav">
+             . . . .&nbsp;<a href="design.html">VIEW ALL&nbsp;<i class="fas fa-caret-square-right"></i></a>
+          </p>
+          <p>
+            <img th:src="|https://taku-oshiba.com/img/${u.imgSrc}.jpg|" th:alt="${u.imgSrc}">
           </p>
         </article>
       </li>

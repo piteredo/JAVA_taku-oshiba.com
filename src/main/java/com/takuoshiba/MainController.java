@@ -13,6 +13,8 @@ import com.takuoshiba.ScheduleRepository;
 import com.takuoshiba.PlaceRepository;
 import com.takuoshiba.PlayerRepository;
 
+import com.takuoshiba.Updates;
+
 import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.List;
@@ -32,7 +34,7 @@ public class MainController {
 	@GetMapping(path="/")
 	public ModelAndView getIndex(ModelAndView mav){
 		
-		Iterable<Youtube> youtubeList = youtubeRepository.findAll();		
+		Iterable<Youtube> youtubeList = youtubeRepository.findAll();
 		mav.addObject("youtubeList", youtubeList);
 		
 		Iterable<Design> designList = designRepository.findAll();
@@ -46,33 +48,28 @@ public class MainController {
 		    }
 		    tempList.add(0, s);
 		}
-		/*List<Design> tempList2 = new ArrayList<>();
-		for(int i=0; i<5; i++) {
-			tempList2.add(tempList.get(i));
-		}*/
-		Iterable<Design> designList2 = tempList;
-		
+		Iterable<Design> designList2 = tempList;		
 		mav.addObject("designList", designList2);
 		mav.addObject("designUpdatedate", designUpdatedate);
 		
-		Iterable<Biography> biographyList = biographyRepository.findAll();
-		Iterable<Photo> photoList = photoRepository.findAll();		
-		Iterator<Biography> it2 = biographyList.iterator();
-		Iterator<Photo> it3 = photoList.iterator();
-		Biography biography = it2.next();
-		Photo photo = it3.next();
-		String biographyUpdatedate = biography.getUpdatedate();		
 		
-		List<Biography> bi = new ArrayList<>();
-		bi.add(biography);
-		bi.add(biography);
-		bi.add(biography);
-		bi.add(biography);
-		bi.add(biography);
 		
-		mav.addObject("biography", bi);
-		mav.addObject("photo", photo);
-		mav.addObject("biographyUpdatedate", biographyUpdatedate);
+		
+		List<Updates> updateList = new ArrayList<>();
+		
+		Biography bi = biographyRepository.findAll().iterator().next();
+		Photo ph = photoRepository.findAll().iterator().next();		
+		updateList.add(new Updates(bi.getJaname(),	bi.getUpdatedate(),	bi.getJatextplane(), "bio/"+ph.getSrc()));
+		
+		Design de = designRepository.findAll().iterator().next();	
+		updateList.add(new Updates("デザイン",	de.getUpdatedate(),	"デザイン更新しました。",	"design/"+de.getSrc()));
+		
+		Schedule sc = scheduleRepository.findAll().iterator().next();	
+		updateList.add(new Updates(sc.getTitle(), sc.getUpdatedate(), "ライブ詳細", "design/"+de.getSrc()));
+		
+		
+		mav.addObject("updates", updateList);
+		
 		
 		mav.setViewName("index.html");
 		return mav;
