@@ -1,38 +1,55 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-  
-	<header th:replace="/header.html::header('index, nofollow')"></header>
-	
-    <main id="index">
-      <article th:each="youtube : ${youtubeList}" class="movie">
-        <p><iframe width="560" height="315" th:src="|https://www.youtube.com/embed/${youtube.src}?rel=0|" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
-      </article>
+<header th:replace="/header.html::header('index, nofollow')"></header>
+<main id="index">
 
-      <article class="design">
-        <div>
-          <ul class="slider">
-            <li th:each="design: ${designList}"><a th:href="|https://taku-oshiba.com/img/design/${design.src}.jpg|" data-group="modal" class="modal"><img th:src="|https://taku-oshiba.com/img/design/${design.src}.jpg|" th:alt="${design.src}"></a></li>
-          </ul>
-        </div>
-        <p class="footer_nav"><a href="design.html">VIEW ALL <i class="fas fa-caret-square-right"></i></a></p>
-      </article>
+  <article th:each="youtube: ${youtubeList}" class="movie">
+    <p><iframe width="560" height="315"
+      th:src="|https://www.youtube.com/embed/${youtube.src}?rel=0|"
+      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </p>
+  </article>
+
+  <article class="design">
+    <ul class="slider">
+      <li th:each="design: ${designList}">
+        <a th:href="|https://taku-oshiba.com/img/design/${design.src}.jpg|" data-group="modal" class="modal">
+          <img th:src="|https://taku-oshiba.com/img/design/${design.src}.jpg|" th:alt="${design.src}">
+        </a>
+      </li>
+    </ul>
+    <p class="footer_nav">
+      <a href="/design">
+        VIEW ALL&nbsp;<i class="fas fa-caret-square-right"></i>
+      </a>
+    </p>
+  </article>
 
 
-      <div class="updates">
-        <h2>UPDATES</h2>
-        <ul>
-          <li th:each="b : ${biography}"><article>
-            <div class="header">
-              <h3 th:text="${b.janame}"></h3>
-              <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${biographyUpdatedate}"></time></p>
-            </div>
-            <p th:text="${b.jatextplane}" class="sentence"></p>
-            <p class="footer_nav">... <a href="design.html">VIEW ALL <i class="fas fa-caret-square-right"></i></a></p>
-            <p><img th:src="|https://taku-oshiba.com/img/bio/${photo.src}.jpg|" alt=""></p>
-          </article></li>
-        </ul>
-      </div>
-    </main>
+  <div class="updates">
+    <h2>UPDATES</h2>
+    <ul>
+      <li th:each="b: ${biography}">
+        <article>
+          <div class="header">
+            <h3 th:text="${b.janame}"></h3>
+            <p class="updated-date">
+              <i class="fas fa-sync"></i>
+              <time th:text="${biographyUpdatedate}"></time>
+            </p>
+          </div>
+          <p th:text="${b.jatextplane}" class="sentence"></p>
+          <p class="footer_nav">
+            ...&nbsp;<a href="design.html">VIEW ALL&nbsp;<i class="fas fa-caret-square-right"></i></a>
+          </p>
+          <p>
+            <img th:src="|https://taku-oshiba.com/img/bio/${photo.src}.jpg|" alt="${photo.src}">
+          </p>
+        </article>
+      </li>
+    </ul>
+  </div>
 
-	<footer th:replace="/footer.html::footer"></footer>	
+</main>
+<footer th:replace="/footer.html::footer"></footer>
 </html>

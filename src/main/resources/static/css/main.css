@@ -1,36 +1,218 @@
 @charset "utf-8";
-/*
-*
-*
-*
-*
-*/
+
+
+/*----------------------------- BASE -----------------------------*/
+
 html {
-	font-size: 62.5%; /* 10px(root) */
-	overflow-y: scroll; /* always show scroll bar */
-	/*transform: translateZ(0); /* overflow-y for retina display */ /*fixed できなくなる*/
+  font-size: 62.5%; /*10px(root)*/
+  overflow-y: scroll;
 }
 
 img,
 iframe {
-	width: 100%;
+  width: 100%;
 }
 
 a {
-	color: rgb(0, 164, 151); /* 暫定 */
+  color: rgb(0, 163, 175);
 }
 
+body {
+  font-size: 1.4rem; /*basic(14px)*/
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+  text-align: justify;
+  margin: 0 5%;
+}
+@media screen and (min-width: 960px) {
+  body {
+    width: 864px; /*960px*90%*/
+    margin: 0 auto;
+  }
+}
+
+
+/*----------------------------- HEADER -----------------------------*/
+
+header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: 0;
+  
+  left: 0;
+  width: 90%;  
+  padding: 15.34px 5%; /*767px*2%*/
+}
+@media screen and (min-width: 768px) {
+  header {
+    padding: 2% 5%;
+  }
+}
+@media screen and (min-width: 960px) {
+  header {
+    left: auto;
+    width: 864px; /*=bodyWidth*/
+    padding: 19.2px 0; /*960px*2%*/
+  }
+}
+
+
+header .logo {
+  width: 241.605px; /*767px*90%*35%*/
+  height: 100%;
+    
+  /*border: 1px solid #000; box-sizing: border-box; --- FOR_DEBUG */
+}
+@media screen and (min-width: 768px) {
+  header .logo {
+    width: 35%;
+  }
+}
+@media screen and (min-width: 960px) {
+  header .logo {
+    width: 302.4px; /*960px*90%*35%*/
+  }
+}
+
+
+/*----------------------------- HEADER.NAV / HAMBURGUR_MENU -----------------------------*/
+
+header nav {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 3rem;
+  font-weight: bold; /*効いてない？？*/
+  
+  /*border: 1px solid #000; box-sizing: border-box; --- FOR_DEBUG */
+}
+@media screen and (min-width: 768px) {
+  header nav {
+    width: 62%;
+    font-size: 1.8rem;
+  }
+}
+@media screen and (min-width: 960px) {
+  header nav {
+    width: 535.68px; /*960px*90%*62%*/
+  }
+}
+
+header nav li {
+	margin-bottom: 25%;
+}
+@media screen and (min-width: 768px) {
+  header nav li {
+    margin-bottom: 0;
+  }
+}
+
+header nav #ham-menu-cb {
+  display: none;
+}
+
+header nav #ham-menu-icon {
+  display: none;
+  
+  cursor: pointer;    
+  position: relative;
+  z-index: 1000;
+  width: 55.224px; /*logo700:160=241.605:Xpx*/
+  height: 55.224px;
+  /*padding: 27.612px 0;*/
+  /*margin: -1% 2% 0 18%;*/
+  /*width: 4.7rem;*/
+  border: solid 1px #000;
+  text-align: center;
+  font-size: 3rem;
+  line-height: 55.224px;
+}
+@media screen and (max-width: 767px) {
+  header nav #ham-menu-icon {
+    display: block;    
+  }
+}
+
+header nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 767px) {
+  header nav ul {
+    display: inline; /*default*/
+  }
+  
+  header nav div.ham-menu {
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    left: 45%;
+    top: 70.564px; /*55.224+15.34*/
+  }
+}
+
+header nav #ham-menu-bg {
+  opacity: 0;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: block;
+  position: fixed;
+  z-index: -1;
+  /*transition: all 0s linear 0s;*/
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+header nav #ham-menu-cb:checked ~ .ham-menu {
+  opacity: 1.0;
+  pointer-events: all;
+}
+
+header nav #ham-menu-cb:checked ~ #ham-menu-bg {
+    opacity: 0.9;
+    z-index: 999;
+    pointer-events: all;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (max-width:767px){
-	header .logo {
-		width: 214.76px;
-		height: 100%;
-	}
+	
 
 	header nav li {
-		font-size: 3rem;
+		/*font-size: 3rem;
 		font-family: 'Ubuntu Condensed', sans-serif;
 		margin-bottom: 30%;
-		text-align: center;
+		text-align: center;*/
 	}
 
 	header nav li:last-child {
@@ -53,28 +235,24 @@ a {
 }
 
 @media screen and (min-width:768px){
-	header .logo {
-		width: 29%;
-		height: 100%;
-	}
 
 	header nav {
-		width: 58%;
+		/*width: 58%;
 		height: auto;
-		margin-left: 3%;
+		margin-left: 3%;*/
 	}
 
 	header nav ul {
-		display: flex;
+		/*display: flex;
 		justify-content: space-between;
 		align-items: flex-end; /*きいてない*/
 	}
 
 	header nav ul li {
-		font-size: 1.8rem;
+		/*font-size: 1.8rem;
 		font-weight: bold;
 		font-family: 'Ubuntu Condensed', sans-serif;
-		display: block;
+		display: block;*/
 	}
 
 	main {
@@ -91,54 +269,16 @@ a {
 }
 
 @media screen and (max-width:959px){
-	body {
-		font-size: 1.4rem; /* basic(14px) */
-		font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
-		margin: 5%;
-		text-align: justify;
-	}
+	
 
-	header {
-		position: fixed;
-		display: flex;
-		top:0;
-		height: 60px; /*不要？*/
-		width: 100%;
-		background-color: rgba(255, 255, 255, 0.9);
-		padding-top: 2%;
-		/*z-index: 9999;*/
-	}
+	
 }
 @media screen and (min-width:960px){
-	body {
-		font-size: 1.4rem; /* basic(14px) */
-		font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
-		width: 902.4px;
-		margin: 0 auto;
-		text-align: justify;
-	}
+	
 
-	header {
-		position: fixed;
-		display: flex;
-		top:0;
-		height: 60px; /*不要？*/
-		width: 902.4px;
-		background-color: rgba(255, 255, 255, 0.9);
-		padding-top: 19.2px;
-		/*z-index: 9999;*/
-	}
+	
 
-	header .logo {
-		width: 278.4px;
-		height: 100%;
-	}
-
-	header nav {
-		width: 604.8px;
-		height: auto;
-		margin-left: 28.8px;
-	}
+	
 
 
 }
@@ -379,74 +519,7 @@ main#discography .fa-amazon {
 
 
 
-#ham-menu-cb {
-    display: none;
-}
 
-@media screen and (max-width:767px) {
-
-	.ham-menu {
-	    opacity: 0;
-	    pointer-events: none;
-	    /*transition: all 0.25s linear 0s;*/
-
-	    display: block;
-	    position: relative;
-	    z-index: 1000;
-	    margin: 20% 0 0 12%;
-	}
-
-	#ham-menu-icon {
-	    cursor: pointer;
-	    display: block;
-	    position: relative;
-	    z-index: 1000;
-	    transition: all 0.25s linear 0s;
-	    padding: 0.8rem 0;
-	    margin: -1% 2% 0 18%;
-	    width: 4.7rem;
-	    border: solid 1px #000;
-	    text-align: center;
-	    font-size: 3rem;
-	}
-
-	#ham-menu-bg {
-	    opacity: 0;
-	    pointer-events: none;
-	    background-color: rgba(255, 255, 255, 0.9);
-
-	    display: block;
-	    position: fixed;
-	    z-index: -1;
-	    transition: all 0.25s linear 0s;
-	    width: 100%;
-	    height: 100%;
-	    top: 0;
-	    left: 0;
-	}
-
-	#ham-menu-cb:checked ~ .ham-menu {
-	  opacity: 1.0;
-	  pointer-events: all;
-	}
-
-	#ham-menu-cb:checked ~ #ham-menu-icon {
-	  /* TODO */
-	}
-
-	#ham-menu-cb:checked ~ #ham-menu-bg {
-	    opacity: 0.9;
-	    z-index: 999;
-
-	    pointer-events: all; /* 證ｫ螳� */
-	}
-}
-
-@media screen and (min-width:768px) {
-	header nav #ham-menu-icon {
-   		 display: none;
-	}
-}
 
 
 
