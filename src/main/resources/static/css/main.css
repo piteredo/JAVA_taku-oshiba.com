@@ -1,0 +1,495 @@
+@charset "utf-8";
+/*
+*
+*
+*
+*
+*/
+html {
+	font-size: 62.5%; /* 10px(root) */
+	overflow-y: scroll; /* always show scroll bar */
+	/*transform: translateZ(0); /* overflow-y for retina display */ /*fixed できなくなる*/
+}
+
+img,
+iframe {
+	width: 100%;
+}
+
+a {
+	color: rgb(0, 164, 151); /* 暫定 */
+}
+
+@media screen and (max-width:767px){
+	header .logo {
+		width: 214.76px;
+		height: 100%;
+	}
+
+	header nav li {
+		font-size: 3rem;
+		font-family: 'Ubuntu Condensed', sans-serif;
+		margin-bottom: 30%;
+		text-align: center;
+	}
+
+	header nav li:last-child {
+		margin-bottom: 0;
+	}
+
+	main {
+		margin-top: 107.38px;
+	}
+
+	main .updates ul li {
+		width: 100%;
+		border: solid 1px #AAA;
+		box-sizing: border-box;
+		padding: 2%;
+		margin-bottom: 4%;
+	}
+
+
+}
+
+@media screen and (min-width:768px){
+	header .logo {
+		width: 29%;
+		height: 100%;
+	}
+
+	header nav {
+		width: 58%;
+		height: auto;
+		margin-left: 3%;
+	}
+
+	header nav ul {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end; /*きいてない*/
+	}
+
+	header nav ul li {
+		font-size: 1.8rem;
+		font-weight: bold;
+		font-family: 'Ubuntu Condensed', sans-serif;
+		display: block;
+	}
+
+	main {
+		margin-top: 15%;
+	}
+
+	main .updates ul li {
+		width: 48%;
+		border: solid 1px #AAA;
+		box-sizing: border-box;
+		padding: 2%;
+		margin-bottom: 4%;
+	}
+}
+
+@media screen and (max-width:959px){
+	body {
+		font-size: 1.4rem; /* basic(14px) */
+		font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+		margin: 5%;
+		text-align: justify;
+	}
+
+	header {
+		position: fixed;
+		display: flex;
+		top:0;
+		height: 60px; /*不要？*/
+		width: 100%;
+		background-color: rgba(255, 255, 255, 0.9);
+		padding-top: 2%;
+		/*z-index: 9999;*/
+	}
+}
+@media screen and (min-width:960px){
+	body {
+		font-size: 1.4rem; /* basic(14px) */
+		font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+		width: 902.4px;
+		margin: 0 auto;
+		text-align: justify;
+	}
+
+	header {
+		position: fixed;
+		display: flex;
+		top:0;
+		height: 60px; /*不要？*/
+		width: 902.4px;
+		background-color: rgba(255, 255, 255, 0.9);
+		padding-top: 19.2px;
+		/*z-index: 9999;*/
+	}
+
+	header .logo {
+		width: 278.4px;
+		height: 100%;
+	}
+
+	header nav {
+		width: 604.8px;
+		height: auto;
+		margin-left: 28.8px;
+	}
+
+
+}
+
+main article.movie {
+	border: solid 1px #AAA;
+	box-sizing: border-box;
+	padding: 2%;
+	margin-bottom: 10%;
+}
+
+main .design .footer_nav {
+	position: relative;
+	text-align: right;
+}
+
+main .design {
+	margin-bottom: 10%;
+}
+
+main .design ul li,
+main#biography ul li {
+	height: 300px;
+}
+
+main .slider .prev {
+	position: absolute;
+	left: -3%;
+	top: 130px;
+	cursor: pointer;
+	font-size: 2rem;
+}
+
+main .slider .next {
+	position: absolute;
+	right: -3%;
+	top: 130px;
+	cursor: pointer;
+	font-size: 2rem;
+}
+
+main .design img,
+main#biography ul li img {
+	border: solid 1px #AAA;
+	box-sizing: border-box;
+	padding: 2%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 40%;
+	margin-right: 5%;
+}
+
+main .updates {
+	margin-bottom: 10%;
+}
+
+main .updates ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: flex-start;
+}
+
+main .updates ul li article p.sentence {
+	display: block;
+	overflow: hidden;
+	height: 6.4em; /* 2em（行）x line-heightの1.8 */
+	line-height: 1.6;
+}
+
+main .updates ul li img {
+	height: 300px;
+	object-fit: cover;
+	object-position: center 30%;
+}
+
+main .updates .updated-date {
+	font-size: 1.1rem;
+	color: #777;
+}
+
+main#index .updates h2 {
+	font-family: 'Ubuntu Condensed', sans-serif;
+	font-size: 1.8rem;
+	font-weight: bold;
+	margin-bottom: 2%;
+}
+
+main .updates h3 {
+	font-size: 1.8rem;
+	font-weight: bold;
+	margin-bottom: 3%;
+}
+
+main .updates .footer_nav {
+	margin-bottom: 5%;
+}
+
+
+main article .header {
+	margin-bottom: 3%;
+}
+
+main article h2 {
+	font-size: 3.4rem;
+	font-family: 'Ubuntu Condensed', sans-serif;
+	font-weight: bold;
+	margin-bottom: 1%;
+}
+
+main article .updated-date {
+	font-size: 1.1rem;
+	color: #777;
+}
+
+main article .updated-date .fas {
+	font-size: 1.0rem;
+	letter-spacing: 0.3rem;
+}
+
+main#biography .slider {
+	margin-bottom: 5%;
+}
+main#biography .artist-name {
+	font-weight: bold;
+}
+
+main#biography section:first-child {
+	border-bottom: solid 1px #CCC;
+	padding-bottom: 7%;
+}
+
+main#biography section:last-child {
+	padding-top: 4%;
+}
+
+.sentence {
+	line-height: 1.6; /* 160% of font size */
+}
+
+
+
+main#design ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+main#design li img {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	margin-bottom: 10%;
+
+	border: solid 1px #AAA;
+	box-sizing: border-box;
+	padding: 5%;
+}
+
+
+main#schedule .date {
+	font-size: 1.8rem;
+}
+
+main#schedule h3 {
+	font-size: 1.8rem;
+	font-weight: bold;
+	margin-bottom: 2%;
+}
+
+main#schedule p,
+main#schedule ul li {
+	margin-bottom: 1.5%;
+}
+
+main#schedule section {
+	margin-bottom: 10%;
+}
+
+@media screen and (max-width:479px) {
+	main#schedule img,
+	main#discography img {
+		border: solid 1px #AAA;
+		box-sizing: border-box;
+		padding: 1%;
+		width: 100%;
+	}
+}
+
+@media screen and (min-width:480px) {
+	main#schedule img,
+	main#discography img {
+		border: solid 1px #AAA;
+		box-sizing: border-box;
+		padding: 1%;
+		width: 460.8px;
+	}
+}
+
+
+
+main#discography h3 {
+	font-size: 1.8rem;
+	font-weight: bold;
+	margin-bottom: 2%;
+}
+
+main#discography ul {
+	margin-bottom: 2%;
+}
+
+main#discography section p,
+main#discography ul li,
+main#discography ol li {
+	line-height: 1.8;
+}
+
+main#discography section p {
+	margin-bottom: 1.5%;
+}
+
+main#discography ol {
+	list-style: inside;
+	list-style-type: decimal-leading-zero;
+}
+
+main#discography .yen-letter {
+	font-family: sans-serif;
+}
+
+main#discography section {
+	margin-bottom: 10%;
+}
+
+main#discography .fa-amazon {
+	font-size: 3rem;
+}
+
+
+
+#ham-menu-cb {
+    display: none;
+}
+
+@media screen and (max-width:767px) {
+
+	.ham-menu {
+	    opacity: 0;
+	    pointer-events: none;
+	    /*transition: all 0.25s linear 0s;*/
+
+	    display: block;
+	    position: relative;
+	    z-index: 1000;
+	    margin: 20% 0 0 12%;
+	}
+
+	#ham-menu-icon {
+	    cursor: pointer;
+	    display: block;
+	    position: relative;
+	    z-index: 1000;
+	    transition: all 0.25s linear 0s;
+	    padding: 0.8rem 0;
+	    margin: -1% 2% 0 18%;
+	    width: 4.7rem;
+	    border: solid 1px #000;
+	    text-align: center;
+	    font-size: 3rem;
+	}
+
+	#ham-menu-bg {
+	    opacity: 0;
+	    pointer-events: none;
+	    background-color: rgba(255, 255, 255, 0.9);
+
+	    display: block;
+	    position: fixed;
+	    z-index: -1;
+	    transition: all 0.25s linear 0s;
+	    width: 100%;
+	    height: 100%;
+	    top: 0;
+	    left: 0;
+	}
+
+	#ham-menu-cb:checked ~ .ham-menu {
+	  opacity: 1.0;
+	  pointer-events: all;
+	}
+
+	#ham-menu-cb:checked ~ #ham-menu-icon {
+	  /* TODO */
+	}
+
+	#ham-menu-cb:checked ~ #ham-menu-bg {
+	    opacity: 0.9;
+	    z-index: 999;
+
+	    pointer-events: all; /* 證ｫ螳� */
+	}
+}
+
+@media screen and (min-width:768px) {
+	header nav #ham-menu-icon {
+   		 display: none;
+	}
+}
+
+
+
+
+footer {
+	box-sizing: border-box;
+	padding: 5% 5% 2%;
+	margin-top: 5%;
+	background-color: #333;
+}
+
+footer nav .main {
+	margin-bottom: 7%;
+}
+
+footer nav .main li {
+	font-size: 1.6rem;
+	font-weight: bold;
+	margin-bottom: 6%;
+}
+
+footer nav .main li:last-child {
+	margin-bottom: 0;
+}
+
+footer nav .icons {
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 5%;
+}
+
+footer nav .icons li {
+	font-size: 2.0rem;
+	margin-right: 6%;
+}
+
+footer nav .icons li:last-child {
+	margin-right: 0;
+}
+
+footer small {
+	display: block;
+	font-size: 1rem;
+	text-align: center;
+	color: #FFF;
+}

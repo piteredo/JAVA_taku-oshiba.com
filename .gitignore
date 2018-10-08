@@ -4,7 +4,7 @@ gradle/
 target/
 src/test/
 src/main/webapp/
-src/main/resources/static/
+src/main/resources/static/img
 src/main/resources/application.properties
 WebContent/
 .classpath
