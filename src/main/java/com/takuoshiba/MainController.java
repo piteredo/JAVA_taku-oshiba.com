@@ -1,17 +1,9 @@
 package com.takuoshiba;
 
 import org.springframework.stereotype.Controller;
-//import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.takuoshiba.Schedule;
-import com.takuoshiba.Place;
-import com.takuoshiba.Player;
-import com.takuoshiba.ScheduleRepository;
-import com.takuoshiba.PlaceRepository;
-import com.takuoshiba.PlayerRepository;
 
 import com.takuoshiba.Updates;
 
@@ -31,8 +23,12 @@ public class MainController {
 	private @Autowired DesignRepository designRepository;
 	private @Autowired DiscographyRepository discographyRepository;
 	
+	//private @Autowired Wp_postsRepository wp_postsRepository;
+	
 	@GetMapping(path="/")
 	public ModelAndView getIndex(ModelAndView mav){
+		
+		
 		
 		Iterable<Youtube> youtubeList = youtubeRepository.findAll();
 		mav.addObject("youtubeList", youtubeList);
@@ -57,7 +53,7 @@ public class MainController {
 		
 		List<Updates> updateList = new ArrayList<>();
 		
-		Biography bi = biographyRepository.findAll().iterator().next();
+		/*Biography bi = biographyRepository.findAll().iterator().next();
 		Photo ph = photoRepository.findAll().iterator().next();		
 		updateList.add(new Updates(bi.getJaname(),	bi.getUpdatedate(),	bi.getJatextplane(), "bio/"+ph.getSrc()));
 		
@@ -67,6 +63,10 @@ public class MainController {
 		Schedule sc = scheduleRepository.findAll().iterator().next();	
 		updateList.add(new Updates(sc.getTitle(), sc.getUpdatedate(), "ライブ詳細", "design/"+de.getSrc()));
 		
+		Wp_posts wp = wp_postsRepository.findAll().iterator().next();
+		updateList.add(new Updates(wp.getPost_title(), wp.getPost_date(), wp.getPost_content(), wp.getImgsource()));*/
+		
+		//updateList.add(new Updates("更新履歴タイトルのテスト", "2018-10-09", "更新履歴の本文表示テスト中", "design/071220metro9"));
 		
 		mav.addObject("updates", updateList);
 		

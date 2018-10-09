@@ -23,7 +23,7 @@
 		  </ul>
 		  <p th:switch="${schedule.imgurl}">
 		  	<span th:case="none"></span>
-		  	<img th:case="*" th:src="|https://taku-oshiba.com/img/design/${schedule.imgurl}|">
+		  	<img th:case="*" th:src="|img/design/${schedule.imgurl}|">
 		  </p>
 		</section>
 

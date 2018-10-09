@@ -12,8 +12,8 @@
         <section>
           <ul>
             <li th:each="design : ${designList}" id="modal">
-              <a th:href="|https://taku-oshiba.com/img/design/${design.src}.jpg|" data-group="modal" class="modal">
-                <img th:data-original="|https://taku-oshiba.com/img/design/${design.src}.jpg|" src="https://taku-oshiba.com/img/dummy_loader80x80.gif" th:alt="${design.src}" class="lazy">
+              <a th:href="|img/design/${design.src}.jpg|" data-group="modal" class="modal">
+                <img th:data-original="|img/design/${design.src}.jpg|" src="img/dummy_loader80x80.gif" th:alt="${design.src}" class="lazy">
               </a>
             </li>
           </ul>

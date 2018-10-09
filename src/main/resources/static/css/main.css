@@ -40,6 +40,8 @@ header {
   left: 0;
   width: 90%;  
   padding: 15.34px 5%; /*767px*2%*/
+  
+  z-index: 10000;
 }
 @media screen and (min-width: 768px) {
   header {
@@ -360,6 +362,10 @@ main#biography .slider img {
 	margin-right: 5%;
 }
 
+.slider .slick-slide  {
+    margin-left: 4px;
+    margin-right: 4px;
+}
 
 
 /*----------------------------- MAIN.BIOGRAPHY -----------------------------*/

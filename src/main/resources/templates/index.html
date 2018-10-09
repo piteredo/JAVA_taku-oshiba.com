@@ -3,6 +3,10 @@
 <header th:replace="/header.html::header('index, nofollow')"></header>
 <main id="index">
 
+
+<meta charset="utf-8">
+ 
+
   <article class="movie">
     <div th:each="youtube: ${youtubeList}"><iframe width="560" height="315"
         th:src="|https://www.youtube.com/embed/${youtube.src}?rel=0|"
@@ -31,6 +35,7 @@
       <h2>UPDATES</h2>
       <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${biographyUpdatedate}"></time></p>
     </div>
+    <p>準備中 . . .</p>
     <ul>
       <!--<li th:each="b: ${biography}">
         <article>
