@@ -25,7 +25,7 @@ public class MainController {
 	
 	//private @Autowired Wp_postsRepository wp_postsRepository;
 	
-	@GetMapping(path="/")
+	@GetMapping(path="/index")
 	public ModelAndView getIndex(ModelAndView mav){
 		
 		
