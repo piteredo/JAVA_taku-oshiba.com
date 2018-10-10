@@ -26,15 +26,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
   <script>
-    $(function() {
+    $(function() {    	
       $('.slider').slick({
+    	slidesToShow: 2,
         autoplay: false,
         arrows: true,
-        slidesToShow: 2,
         centerMode: true,
         initialSlide: 1,
         prevArrow:'<div class="prev"><i class="fas fa-angle-left"></i></div>',
-        nextArrow:'<div class="next"><i class="fas fa-angle-right"></i></div>'
+        nextArrow:'<div class="next"><i class="fas fa-angle-right"></i></div>',
+        responsive: [{
+	     breakpoint: 599,
+          settings: {
+            slidesToShow: 1
+	     }
+		}]
       });
       
       $('.modal').modaal({

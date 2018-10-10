@@ -413,7 +413,7 @@ main#schedule ul li {
 }
 
 main#schedule section {
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 main#schedule section:last-child {
@@ -422,10 +422,11 @@ main#schedule section:last-child {
 
 
 
-/*----------------------------- MAIN.LARGE_IMG (SCHE, DISCO) -----------------------------*/
+/*----------------------------- MAIN.LARGE_IMG (SCHE, BLOG, DISCO) -----------------------------*/
 
 
 main#schedule img,
+main#blog img,
 main#discography img {
   border: solid 1px #AAA;
   box-sizing: border-box;
@@ -434,6 +435,7 @@ main#discography img {
 }
 @media screen and (min-width:480px) {
   main#schedule img,
+  main#blog img,
   main#discography img {
     width: 474px;
   }
@@ -457,6 +459,37 @@ main#design li img {
   height: 80px;
   object-fit: cover;
   padding: 4px;
+}
+
+
+
+/*----------------------------- MAIN.BLOG -----------------------------*/
+
+
+main#blog .header h2 a,
+main#blog section h3 a {
+  /*negation of root*/
+  text-decoration : none;
+  color: #000;
+}
+
+main#blog section h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 13px;
+}
+
+main#blog section p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+main#blog section {
+  margin-bottom: 100px;
+}
+
+main#blog img {
+  height: auto;
 }
 
 
