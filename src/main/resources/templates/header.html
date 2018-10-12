@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon-180x180.png">
   
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-  <script src="css/slick.js"></script>
+  <script src="js/slick.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
   <script>
@@ -32,13 +32,17 @@
         autoplay: false,
         arrows: true,
         centerMode: true,
+        speed: 500,
+        touchThreshold: 14,
         initialSlide: 1,
         prevArrow:'<div class="prev"><i class="fas fa-angle-left"></i></div>',
         nextArrow:'<div class="next"><i class="fas fa-angle-right"></i></div>',
         responsive: [{
 	     breakpoint: 599,
           settings: {
-            slidesToShow: 1
+            slidesToShow: 1,
+            initialSlide: 0,
+            touchThreshold: 7,
 	     }
 		}]
       });

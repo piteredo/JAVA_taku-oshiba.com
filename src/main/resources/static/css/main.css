@@ -23,6 +23,7 @@ body {
   font-size: 1.4rem; /*basic(14px)*/
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
   text-align: justify;
+  word-break: break-all;
 }
 
 
@@ -41,7 +42,7 @@ header {
   width: 90%;  
   padding: 15.34px 5%; /*767px*2%*/
   
-  z-index: 10000;
+  z-index: 20;
 }
 @media screen and (min-width: 768px) {
   header {
@@ -161,7 +162,7 @@ header nav ul {
 header nav #ham-menu-bg {
   opacity: 0;
   pointer-events: none;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.99);
   display: block;
   position: fixed;
   z-index: -1;
@@ -405,6 +406,7 @@ main#schedule h3 {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 13px;
+  line-height: 20px;
 }
 
 main#schedule section p,
@@ -477,6 +479,7 @@ main#blog section h3 {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 13px;
+  line-height: 20px
 }
 
 main#blog section p {
@@ -501,6 +504,7 @@ main#discography h3 {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 13px;
+  line-height: 20px
 }
 
 main#discography .fa-amazon {
@@ -524,10 +528,6 @@ main#discography section {
 
 main#discography section:last-child {
   margin-bottom: 0;
-}
-
-main#discography .yen-letter {
-  font-family: sans-serif;
 }
 
 

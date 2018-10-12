@@ -15,6 +15,10 @@
   </article>
 
   <article class="design">
+  	<div class="header">
+      <h2>DESIGN</h2>
+      <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${biographyUpdatedate}"></time></p>
+    </div>
     <ul class="slider">
       <li th:each="design: ${designList}">
         <a th:href="|https://taku-oshiba.com/img/design/${design.src}.jpg|" data-group="modal" class="modal">
