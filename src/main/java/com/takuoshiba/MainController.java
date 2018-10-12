@@ -23,7 +23,7 @@ public class MainController {
 	private @Autowired DesignRepository designRepository;
 	private @Autowired DiscographyRepository discographyRepository;
 	
-	//private @Autowired Wp_postsRepository wp_postsRepository;
+	private @Autowired Wp_postsRepository wp_postsRepository;
 	
 	@GetMapping(path="/index")
 	public ModelAndView getIndex(ModelAndView mav){
@@ -37,6 +37,7 @@ public class MainController {
 		List<Design> tempList = new ArrayList<>();		
 		String designUpdatedate = "";
 		Iterator<Design> it = designList.iterator();
+		int cn = 0;
 		while(it.hasNext()) {
 			Design s = it.next();
 		    if(s.getUpdatedate() != null) {
@@ -44,7 +45,14 @@ public class MainController {
 		    }
 		    tempList.add(0, s);
 		}
-		Iterable<Design> designList2 = tempList;		
+		List<Design> tempList5 = new ArrayList<>();	
+		Iterator<Design> it6 = tempList.iterator();
+		while(it6.hasNext() && cn<5) {
+			Design s = it6.next();
+		    tempList5.add(s);
+		    cn++;
+		}
+		Iterable<Design> designList2 = tempList5;		
 		mav.addObject("designList", designList2);
 		mav.addObject("designUpdatedate", designUpdatedate);
 		
@@ -67,6 +75,37 @@ public class MainController {
 		updateList.add(new Updates(wp.getPost_title(), wp.getPost_date(), wp.getPost_content(), wp.getImgsource()));*/
 		
 		//updateList.add(new Updates("更新履歴タイトルのテスト", "2018-10-09", "更新履歴の本文表示テスト中", "design/071220metro9"));
+		
+		//Wp_posts wp = wp_postsRepository.findAll().iterator().next();
+		//updateList.add(new Updates(wp.getPost_title(), wp.getPost_date(), wp.getPost_content(), wp.getImgsource()));
+		
+		
+		Iterable<Wp_posts> wp_postsList = wp_postsRepository.findAll();
+		List<Wp_posts> tempList2 = new ArrayList<>();
+		
+		Iterator<Wp_posts> it2 = wp_postsList.iterator();
+		while(it2.hasNext()) {
+			Wp_posts s = it2.next();
+			if(s.getPost_status().equals("publish")) {
+				tempList2.add(0, s);
+			}
+		}
+		
+		Iterator<Wp_posts> it3 = tempList2.iterator();
+		int counter = 0;
+		String url = "";
+		while(it3.hasNext() && counter<5) {
+			Wp_posts s = it3.next();
+			Iterator<Wp_posts> it4 = wp_postsList.iterator();
+			while(it4.hasNext()) {
+				Wp_posts ss = it4.next();
+				if(s.getID().equals(ss.getPost_parent()) && ss.getPost_mime_type().equals("image/jpeg")) {
+					url = ss.getGuid();
+				}
+			}
+			updateList.add(new Updates(s.getPost_title(), s.getPost_date(), s.getPost_content(), url, s.getGuid()));
+			counter++;
+		}
 		
 		mav.addObject("updates", updateList);
 		

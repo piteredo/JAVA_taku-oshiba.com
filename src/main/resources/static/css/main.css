@@ -297,6 +297,7 @@ main#index .updates h3 {
   font-size: 2rem;
   font-weight: bold;	
   margin-bottom: 10px;
+  line-height: 24px;
 }
 
 main#index .updates .updated-date {

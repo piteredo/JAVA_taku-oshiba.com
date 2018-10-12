@@ -10,7 +10,7 @@
           <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${updateDate}"></time></p>
         </div>
         <ul class="slider">
-          <li th:each="photo : ${photoList}"><a th:href="|img/bio/${photo.src}.jpg|" data-group="modal" class="modal"><img th:src="|img/bio/${photo.src}.jpg|" alt="Taku Oshiba"></a></li>
+          <li th:each="photo : ${photoList}"><a th:href="|img/bio/${photo.src}.jpg|" data-group="modal" class="modal"><img th:src="|img/bio/${photo.src}.jpg|" alt="Taku Oshiba" class="lazy"></a></li>
         </ul>
         <div>
           <section>

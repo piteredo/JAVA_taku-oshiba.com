@@ -17,12 +17,12 @@
   <article class="design">
   	<div class="header">
       <h2>DESIGN</h2>
-      <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${biographyUpdatedate}"></time></p>
+      <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${designUpdatedate}"></time></p>
     </div>
     <ul class="slider">
       <li th:each="design: ${designList}">
         <a th:href="|https://taku-oshiba.com/img/design/${design.src}.jpg|" data-group="modal" class="modal">
-          <img th:src="|https://taku-oshiba.com/img/design/${design.src}.jpg|" th:alt="${design.src}">
+          <img th:src="|https://taku-oshiba.com/img/design/${design.src}.jpg|" th:alt="${design.src}" class="lazy">
         </a>
       </li>
     </ul>
@@ -37,28 +37,9 @@
   <div class="updates">
     <div class="header">
       <h2>UPDATES</h2>
-      <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${biographyUpdatedate}"></time></p>
+      <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${updates[0].updateDate}"></time></p>
     </div>
-    <p>準備中 . . .</p>
     <ul>
-      <!--<li th:each="b: ${biography}">
-        <article>
-          <div>
-            <h3 th:text="${b.janame}"></h3>
-            <p class="updated-date">
-              <i class="fas fa-sync"></i>
-              <time th:text="${biographyUpdatedate}"></time>
-            </p>
-          </div>
-          <p th:text="${b.jatextplane}" class="sentence"></p>
-          <p class="footer_nav">
-             . . . .&nbsp;<a href="design.html">VIEW ALL&nbsp;<i class="fas fa-caret-square-right"></i></a>
-          </p>
-          <p>
-            <img th:src="|https://taku-oshiba.com/img/bio/${photo.src}.jpg|" alt="${photo.src}">
-          </p>
-        </article>
-      </li>-->
       <li th:each="u: ${updates}">
         <article>
           <div>
@@ -70,10 +51,10 @@
           </div>
           <p th:text="${u.text}" class="sentence"></p>
           <p class="footer_nav">
-             . . . .&nbsp;<a href="design.html">VIEW ALL&nbsp;<i class="fas fa-caret-square-right"></i></a>
+             . . . .&nbsp;<a th:href="${u.url}">VIEW ALL&nbsp;<i class="fas fa-caret-square-right"></i></a>
           </p>
           <p>
-            <img th:src="|https://taku-oshiba.com/img/${u.imgSrc}.jpg|" th:alt="${u.imgSrc}">
+            <img th:src="${u.imgSrc}" th:alt="${u.imgSrc}">
           </p>
         </article>
       </li>

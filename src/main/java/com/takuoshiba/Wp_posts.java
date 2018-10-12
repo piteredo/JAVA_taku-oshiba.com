@@ -13,6 +13,10 @@ public class Wp_posts {
     private String post_title;
     private String post_date;
     private String post_content;
+    private String post_status;
+    private Integer post_parent;
+    private String post_mime_type;
+    private String guid;
 
 	public Integer getID() {
 		return ID;
@@ -23,14 +27,27 @@ public class Wp_posts {
 	}
 	
 	public String getPost_date() {
-		return post_date;
+		String result = post_date.substring(0, 10);
+		return result;
 	}
 	
 	public String getPost_content() {
 		return post_content;
 	}
 	
-	public String getImgsource() {
-		return "design/071220metro9";
+	public String getGuid() {
+		return guid;
+	}
+	
+	public String getPost_status() {
+		return post_status;
+	}
+	
+	public Integer getPost_parent() {
+		return post_parent;
+	}
+	
+	public String getPost_mime_type() {
+		return post_mime_type;
 	}
 }

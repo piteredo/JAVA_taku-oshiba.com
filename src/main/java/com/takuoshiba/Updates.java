@@ -5,12 +5,14 @@ public class Updates {
 	private String updateDate;
 	private String text;
 	private String imgSrc;
+	private String url;
 	
-	public Updates(String title, String updateDate, String text, String imgSrc) {
+	public Updates(String title, String updateDate, String text, String imgSrc, String url) {
 		this.title = title;
 		this.updateDate = updateDate;
 		this.text = text;
 		this.imgSrc = imgSrc;
+		this.url = url;
 	}
 	
 	public String getTitle() {
@@ -27,5 +29,9 @@ public class Updates {
 	
 	public String getImgSrc() {
 		return imgSrc;
+	}
+	
+	public String getUrl() {
+		return url;
 	}
 }
