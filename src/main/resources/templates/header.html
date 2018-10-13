@@ -9,6 +9,16 @@
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <meta name="description" content="Guitarist, Composer, Graphic designer | ギタリスト・作曲家・グラフィックデザイナー">
   <meta name="robots" th:content="${meta_content}">
+  
+	<meta property="og:site_name" content="Taku Oshiba, Guitarist | ギタリスト大柴拓 公式サイト">
+	<meta property="og:locale" content="ja_JP">
+	<meta name="twitter:site" content="@piteredo">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:creator" content="@piteredo">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Taku Oshiba, Guitarist | ギタリスト大柴拓 公式サイト">
+	<meta property="og:description" content="Guitarist, Composer, Graphic designer | ギタリスト・作曲家・グラフィックデザイナー">
+	<meta property="og:image" content="https://taku-oshiba.com/img/og-image.jpg">
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/main.css">
@@ -58,14 +68,16 @@
       });
       
       $(function() {
-   	    $('img.lazy').lazyload();
+   	    $('img.lazy').lazyload({
+   	    	distance: 800
+   	    });
    	  });
       
       $('iframe').each(function(i){
     	 let url = $(this).attr('src');    	 
     	 if(url.indexOf("www.youtube.com")){    		 
     		 let id = url.replace("https://www.youtube.com/embed/","").replace("?rel=0","");    		 
-    		 $(this).wrap('<div class="youtube_thumb" data-id="'+id+'"><i class="far fa-play-circle"></i><img src="http://i.ytimg.com/vi/'+id+'/maxresdefault.jpg"></div>');    		 
+    		 $(this).wrap('<div class="youtube_thumb" data-id="'+id+'"><i class="far fa-play-circle"></i><img src="https://i.ytimg.com/vi/'+id+'/maxresdefault.jpg"></div>');    		 
     		 $(this).remove();
     	 }
     	 

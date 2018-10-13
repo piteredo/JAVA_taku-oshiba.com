@@ -34,11 +34,14 @@ public class MainController {
 		Iterable<Youtube> youtubeList = youtubeRepository.findAll();
 		mav.addObject("youtubeList", youtubeList);
 		
+		
+		
+		
 		Iterable<Design> designList = designRepository.findAll();
 		List<Design> tempList = new ArrayList<>();		
 		String designUpdatedate = "";
 		Iterator<Design> it = designList.iterator();
-		int cn = 0;
+		//int cn = 0;
 		while(it.hasNext()) {
 			Design s = it.next();
 		    if(s.getUpdatedate() != null) {
@@ -48,10 +51,10 @@ public class MainController {
 		}
 		List<Design> tempList5 = new ArrayList<>();	
 		Iterator<Design> it6 = tempList.iterator();
-		while(it6.hasNext() && cn<5) {
+		while(it6.hasNext()) {
 			Design s = it6.next();
 		    tempList5.add(s);
-		    cn++;
+		    //cn++;
 		}
 		Iterable<Design> designList2 = tempList5;		
 		mav.addObject("designList", designList2);
@@ -86,16 +89,16 @@ public class MainController {
 					url = ss.getGuid();
 				}
 			}
-			updateList.add(new Updates(s.getPost_title(), s.getPost_date(), s.getPost_content(), url, s.getGuid()));
+			updateList.add(new Updates("[BLOG] " + s.getPost_title(), s.getPost_date(), s.getPost_content(), url, s.getGuid()));
 			counter++;
 		}
 		
 		Biography bi = biographyRepository.findAll().iterator().next();
 		Photo ph = photoRepository.findAll().iterator().next();		
-		updateList.add(new Updates(bi.getJaname(),	bi.getUpdatedate(),	bi.getJatextplane(), "https://taku-oshiba.com/img/bio/"+ph.getSrc()+".jpg", "https://taku-oshiba.com/biography"));
+		updateList.add(new Updates("[BIO] " + bi.getJaname(),	bi.getUpdatedate(),	bi.getJatextplane(), "https://taku-oshiba.com/img/bio/"+ph.getSrc()+".jpg", "https://taku-oshiba.com/biography"));
 		
 		Design de = tempList.iterator().next();	
-		updateList.add(new Updates("デザイン",	designUpdatedate,	"デザイン更新しました。",	"https://taku-oshiba.com/img/design/"+de.getSrc()+".jpg", "https://taku-oshiba.com/design"));
+		updateList.add(new Updates("[DESIGN] 過去デザイン",	designUpdatedate,	"デザイン更新しました。",	"https://taku-oshiba.com/img/design/"+de.getSrc()+".jpg", "https://taku-oshiba.com/design"));
 		
 		String updatedate = "";
 		Iterable<Schedule> scheduleListAll = scheduleRepository.findAll();
@@ -120,7 +123,27 @@ public class MainController {
 		}
 		Iterable<Schedule> scheduleList = scheduleListTemp;
 		Schedule sc = scheduleList.iterator().next();
-		updateList.add(new Updates("次回出演予定", updatedate, sc.getAll(), "https://taku-oshiba.com/img/design/"+sc.getImgurl(), "https://taku-oshiba.com/schedule"));
+		updateList.add(new Updates("[SCHEDULE] 次回出演予定", updatedate, sc.getAll(), "https://taku-oshiba.com/img/design/"+sc.getImgurlWithNoImage(), "https://taku-oshiba.com/schedule"));
+		
+		
+		Iterable<Discography> discographyList = discographyRepository.findAll();
+		List<Discography> tempList6 = new ArrayList<>();
+		
+		String updatedate4 = "";
+		Iterator<Discography> it7 = discographyList.iterator();
+		while(it7.hasNext()) {
+			Discography s = it7.next();
+		    if(s.getUpdatedate() != null) {
+		    	updatedate4 = s.getUpdatedate();
+		    }
+		    tempList6.add(0, s);
+		}
+		Iterable<Discography> discographyList2 = tempList6;
+		Discography di = discographyList2.iterator().next();
+		updateList.add(new Updates("[DISCO] 最新CD", updatedate4, di.getTitle(), "https://taku-oshiba.com/img/design/"+di.getImgurl()+".jpg", "https://taku-oshiba.com/discography"));
+		
+		
+		
 		
 		
 		Collections.sort(updateList);

@@ -91,6 +91,10 @@ public class Schedule {
 	}
 	
 	public String getImgurl() {
+		return imgurl;
+	}
+	
+	public String getImgurlWithNoImage() {
 		String result = imgurl;
 		if(imgurl.equals("none")) {
 			result = "no-image.png";

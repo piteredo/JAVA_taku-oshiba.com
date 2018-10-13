@@ -23,7 +23,7 @@
     <ul class="slider">
       <li th:each="design: ${designList}">
         <a th:href="|https://taku-oshiba.com/img/design/${design.src}.jpg|" data-group="modal" class="modal">
-          <img th:src="|https://taku-oshiba.com/img/design/${design.src}.jpg|" th:alt="${design.src}" class="lazy">
+          <img th:data-lazy="|https://taku-oshiba.com/img/design/${design.src}.jpg|" th:alt="${design.src}" class="lazy">
         </a>
       </li>
     </ul>
