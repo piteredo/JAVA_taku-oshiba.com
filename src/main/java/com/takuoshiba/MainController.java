@@ -31,13 +31,9 @@ public class MainController {
 		//Youtube List (All
 		mav.addObject("youtubeList", getYoutubeList());
 		
-		//Desgin Update Date
+		//Desgin Update Date - List (All / Reverse
 		mav.addObject("designUpdateDate", getDesignUpdateDate());
-		
-		//Design List (All / Reverse
-		mav.addObject("designList", getDesignReverseOrderList());		
-		
-		//----------------------------
+		mav.addObject("designList", getDesignReverseOrderList());
 		
 		//UpdatList
 		List<Updates> updateList = new ArrayList<>();		
@@ -94,10 +90,9 @@ public class MainController {
 			));		
 		
 		//Sort + Add UpdateList (Compare with date
-		Collections.sort(updateList);		
-		mav.addObject("updates", updateList);		
+		Collections.sort(updateList);
 		
-		//Set html
+		mav.addObject("updates", updateList);
 		mav.setViewName("index.html");
 		return mav;
 	}	
