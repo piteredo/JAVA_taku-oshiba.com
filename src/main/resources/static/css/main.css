@@ -306,6 +306,12 @@ main#index .updates h3 {
   line-height: 24px;
 }
 
+main#index .updates h3 a {  
+  /*negation of root*/
+  text-decoration : none;
+  color: #000;
+}
+
 main#index .updates .updated-date {
   /*same as other update_dates*/
   font-size: 1.1rem;

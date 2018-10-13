@@ -22,255 +22,241 @@ public class MainController {
 	private @Autowired PlaceRepository placeRepository;
 	private @Autowired PlayerRepository playerRepository;
 	private @Autowired DesignRepository designRepository;
-	private @Autowired DiscographyRepository discographyRepository;
-	
+	private @Autowired DiscographyRepository discographyRepository;	
 	private @Autowired Wp_postsRepository wp_postsRepository;
 	
 	@GetMapping(path="/index")
 	public ModelAndView getIndex(ModelAndView mav){
 		
+		//Youtube List (All
+		mav.addObject("youtubeList", getYoutubeList());
 		
+		//Desgin Update Date
+		mav.addObject("designUpdateDate", getDesignUpdateDate());
 		
-		Iterable<Youtube> youtubeList = youtubeRepository.findAll();
-		mav.addObject("youtubeList", youtubeList);
+		//Design List (All / Reverse
+		mav.addObject("designList", getDesignReverseOrderList());		
 		
+		//----------------------------
 		
+		//UpdatList
+		List<Updates> updateList = new ArrayList<>();		
 		
-		
-		Iterable<Design> designList = designRepository.findAll();
-		List<Design> tempList = new ArrayList<>();		
-		String designUpdatedate = "";
-		Iterator<Design> it = designList.iterator();
-		//int cn = 0;
-		while(it.hasNext()) {
-			Design s = it.next();
-		    if(s.getUpdatedate() != null) {
-		    	designUpdatedate = s.getUpdatedate();
-		    }
-		    tempList.add(0, s);
-		}
-		List<Design> tempList5 = new ArrayList<>();	
-		Iterator<Design> it6 = tempList.iterator();
-		while(it6.hasNext()) {
-			Design s = it6.next();
-		    tempList5.add(s);
-		    //cn++;
-		}
-		Iterable<Design> designList2 = tempList5;		
-		mav.addObject("designList", designList2);
-		mav.addObject("designUpdatedate", designUpdatedate);
-		
-		
-		
-		
-		List<Updates> updateList = new ArrayList<>();
-		
-		
-		Iterable<Wp_posts> wp_postsList = wp_postsRepository.findAll();
-		List<Wp_posts> tempList2 = new ArrayList<>();
-		
-		Iterator<Wp_posts> it2 = wp_postsList.iterator();
-		while(it2.hasNext()) {
-			Wp_posts s = it2.next();
-			if(s.getPost_status().equals("publish")) {
-				tempList2.add(0, s);
-			}
+		//Blog List (WP_POSTS_LENGTH / post_status == "publish"
+		final int WP_POSTS_LENGTH = 5;
+		Iterable<Wp_posts> wp_postsSubList = getWp_postsSubList(WP_POSTS_LENGTH);
+		Iterator<Wp_posts> wpIt = wp_postsSubList.iterator();
+		while(wpIt.hasNext()) {
+			Wp_posts t = wpIt.next();
+			updateList.add(new Updates(
+					"[BLOG] " + t.getPost_title(),
+					t.getPost_date(),
+					t.getPost_content(),
+					getWp_postsImgUrl(t),
+					t.getGuid()
+				));
 		}
 		
-		Iterator<Wp_posts> it3 = tempList2.iterator();
-		int counter = 0;
-		String url = "";
-		while(it3.hasNext() && counter<5) {
-			Wp_posts s = it3.next();
-			Iterator<Wp_posts> it4 = wp_postsList.iterator();
-			while(it4.hasNext()) {
-				Wp_posts ss = it4.next();
-				if(s.getID().equals(ss.getPost_parent()) && ss.getPost_mime_type().equals("image/jpeg")) {
-					url = ss.getGuid();
-				}
-			}
-			updateList.add(new Updates("[BLOG] " + s.getPost_title(), s.getPost_date(), s.getPost_content(), url, s.getGuid()));
-			counter++;
-		}
+		//Bio
+		updateList.add(new Updates(
+				"[BIO] " + getBiography().getJaname(),
+				getBiography().getUpdatedate(),
+				getBiography().getJatextplane(),
+				"https://taku-oshiba.com/img/bio/" + getBiographyPhoto().getSrc() + ".jpg",
+				"https://taku-oshiba.com/biography"
+			));
 		
-		Biography bi = biographyRepository.findAll().iterator().next();
-		Photo ph = photoRepository.findAll().iterator().next();		
-		updateList.add(new Updates("[BIO] " + bi.getJaname(),	bi.getUpdatedate(),	bi.getJatextplane(), "https://taku-oshiba.com/img/bio/"+ph.getSrc()+".jpg", "https://taku-oshiba.com/biography"));
+		//Design (Latest
+		updateList.add(new Updates(
+				"[DESIGN] 過去デザイン",
+				getDesignUpdateDate(),
+				"デザイン更新しました。",
+				"https://taku-oshiba.com/img/design/" + getLatestDesign().getSrc() + ".jpg",
+				"https://taku-oshiba.com/design"
+			));
 		
-		Design de = tempList.iterator().next();	
-		updateList.add(new Updates("[DESIGN] 過去デザイン",	designUpdatedate,	"デザイン更新しました。",	"https://taku-oshiba.com/img/design/"+de.getSrc()+".jpg", "https://taku-oshiba.com/design"));
+		//Schedule (Current One
+		updateList.add(new Updates(
+				"[SCHEDULE] 次回出演予定",
+				getScheduleUpdateDate(),
+				getCurrentSchedule().getAll(),
+				"https://taku-oshiba.com/img/design/" + getCurrentSchedule().getImgurlWithNoImage(),
+				"https://taku-oshiba.com/schedule"
+			));		
 		
-		String updatedate = "";
-		Iterable<Schedule> scheduleListAll = scheduleRepository.findAll();
-		List<Schedule> scheduleListTemp = new ArrayList<>();
-		LocalDate currentDate = LocalDate.now();
-		Iterator<Schedule> it9 = scheduleListAll.iterator();
-		while(it9.hasNext()) {
-			Schedule s = it9.next();		
-			String dStr = s.getDate();
-			String[] liStr = dStr.split("-");
-		    LocalDate scheDate = LocalDate.of(
-		      Integer.parseInt(liStr[0]),
-		      Integer.parseInt(liStr[1]),
-		      Integer.parseInt(liStr[2])
-		      );
-		    if(s.getUpdatedate() != null) {
-		    	updatedate = s.getUpdatedate();
-		    }		    
-		    if(scheDate.compareTo(currentDate) >= 0) {
-		    	scheduleListTemp.add(s);
-		    }
-		}
-		Iterable<Schedule> scheduleList = scheduleListTemp;
-		Schedule sc = scheduleList.iterator().next();
-		updateList.add(new Updates("[SCHEDULE] 次回出演予定", updatedate, sc.getAll(), "https://taku-oshiba.com/img/design/"+sc.getImgurlWithNoImage(), "https://taku-oshiba.com/schedule"));
+		//Discography (Current One
+		updateList.add(new Updates(
+				"[DISCO] 最新CD",
+				getDiscographyUpdateDate(),
+				getLatestDiscography().getTitle(),
+				"https://taku-oshiba.com/img/design/" + getLatestDiscography().getImgurl() + ".jpg",
+				"https://taku-oshiba.com/discography"
+			));		
 		
+		//Sort + Add UpdateList (Compare with date
+		Collections.sort(updateList);		
+		mav.addObject("updates", updateList);		
 		
-		Iterable<Discography> discographyList = discographyRepository.findAll();
-		List<Discography> tempList6 = new ArrayList<>();
-		
-		String updatedate4 = "";
-		Iterator<Discography> it7 = discographyList.iterator();
-		while(it7.hasNext()) {
-			Discography s = it7.next();
-		    if(s.getUpdatedate() != null) {
-		    	updatedate4 = s.getUpdatedate();
-		    }
-		    tempList6.add(0, s);
-		}
-		Iterable<Discography> discographyList2 = tempList6;
-		Discography di = discographyList2.iterator().next();
-		updateList.add(new Updates("[DISCO] 最新CD", updatedate4, di.getTitle(), "https://taku-oshiba.com/img/design/"+di.getImgurl()+".jpg", "https://taku-oshiba.com/discography"));
-		
-		
-		
-		
-		
-		Collections.sort(updateList);
-		
-		
-		
-		
-		
-		mav.addObject("updates", updateList);
-		
-		
+		//Set html
 		mav.setViewName("index.html");
 		return mav;
-	}
-	
+	}	
 	
 	@GetMapping(path="/biography")
-	public ModelAndView getBiography(ModelAndView mav){
-		
-		Iterable<Biography> biographyList = biographyRepository.findAll();
-		Iterable<Photo> photoList = photoRepository.findAll();
-		
-		Iterator<Biography> it = biographyList.iterator();
-		Biography biography = it.next();		
-		String updatedate = biography.getUpdatedate();
-		
-		mav.addObject("biography", biography);
-		mav.addObject("photoList", photoList);
-		mav.addObject("updateDate", updatedate);
-		
+	public ModelAndView getBiography(ModelAndView mav){		
+		mav.addObject("biography", getBiography());
+		mav.addObject("photoList", getBiographyPhotoList());
+		mav.addObject("updateDate", getBiography().getUpdatedate());		
 		mav.setViewName("biography.html");
 		return mav;
-	}
-	
+	}	
 	
 	@GetMapping(path="/schedule")
-	public ModelAndView getSchedule(ModelAndView mav){
-		
-		Iterable<Schedule> scheduleListAll = scheduleRepository.findAll();
-		List<Schedule> scheduleListTemp = new ArrayList<>();
-		
-		String updatedate = "";
-		LocalDate currentDate = LocalDate.now();
-		Iterator<Schedule> it = scheduleListAll.iterator();
-		while(it.hasNext()) {
-			Schedule s = it.next();		
-			String dStr = s.getDate();
-			String[] liStr = dStr.split("-");
-		    LocalDate scheDate = LocalDate.of(
-		      Integer.parseInt(liStr[0]),
-		      Integer.parseInt(liStr[1]),
-		      Integer.parseInt(liStr[2])
-		      );
-		    
-		    if(s.getUpdatedate() != null) {
-		    	updatedate = s.getUpdatedate();
-		    }
-		    
-		    if(scheDate.compareTo(currentDate) >= 0) {
-		    	scheduleListTemp.add(s);
-		    }
-		}
-		Iterable<Schedule> scheduleList = scheduleListTemp;		
-		
-		mav.addObject("scheduleList", scheduleList);
-		mav.addObject("updateDate", updatedate);
-		
-		Iterable<Place> placeList = placeRepository.findAll();
-		mav.addObject("placeList", placeList);
-		
-		Iterable<Player> playerList = playerRepository.findAll();
-		mav.addObject("playerList", playerList);
-		
+	public ModelAndView getSchedule(ModelAndView mav){		
+		mav.addObject("scheduleList", getScheduleList());
+		mav.addObject("updateDate", getScheduleUpdateDate());		
+		mav.addObject("placeList", getPlaceList());		
+		mav.addObject("playerList", getPlayerList());
 		mav.setViewName("schedule.html");
 		return mav;
-	}
-	
+	}	
 	
 	@GetMapping(path="/design")
 	public ModelAndView getDesign(ModelAndView mav){
-		
-		Iterable<Design> designList = designRepository.findAll();
-		List<Design> tempList = new ArrayList<>();
-		
-		String updatedate = "";
-		Iterator<Design> it = designList.iterator();
-		while(it.hasNext()) {
-			Design s = it.next();
-		    if(s.getUpdatedate() != null) {
-		    	updatedate = s.getUpdatedate();
-		    }
-		    tempList.add(0, s);
-		}
-		Iterable<Design> designList2 = tempList;
-		
-		mav.addObject("designList", designList2);
-		mav.addObject("updateDate", updatedate);
-		
+		mav.addObject("designList", getDesignReverseOrderList());
+		mav.addObject("updateDate", getDesignUpdateDate());		
 		mav.setViewName("design.html");
 		return mav;
-	}
-	
+	}	
 	
 	@GetMapping(path="/discography")
 	public ModelAndView getDiscography(ModelAndView mav){
-		
-		Iterable<Discography> discographyList = discographyRepository.findAll();
-		List<Discography> tempList = new ArrayList<>();
-		
-		String updatedate = "";
-		Iterator<Discography> it = discographyList.iterator();
-		while(it.hasNext()) {
-			Discography s = it.next();
-		    if(s.getUpdatedate() != null) {
-		    	updatedate = s.getUpdatedate();
-		    }
-		    tempList.add(0, s);
-		}
-		Iterable<Discography> discographyList2 = tempList;
-		
-		mav.addObject("discographyList", discographyList2);
-		mav.addObject("updateDate", updatedate);
-		
-		Iterable<Player> playerList = playerRepository.findAll();
-		mav.addObject("playerList", playerList);
-		
+		mav.addObject("discographyList", getDiscographyReverseOrderList());
+		mav.addObject("updateDate", getDiscographyUpdateDate());		
+		mav.addObject("playerList", getPlayerList());		
 		mav.setViewName("discography.html");
 		return mav;
+	}	
+	
+	private Iterable<Youtube> getYoutubeList() {
+		return youtubeRepository.findAll();
+	}
+	
+	private String getDesignUpdateDate() {
+		Design designIdOne = designRepository.findById(1).orElse(null);
+		if(designIdOne == null) {
+			return "";
+		}
+		return designIdOne.getUpdatedate();
+	}
+	
+	private <T> List<T> reverseSort(Iterator<T> it) {
+		List<T> result = new ArrayList<>();
+		while(it.hasNext()) {
+			T t = it.next();
+			result.add(0, t);
+		}
+		return result;
+	}
+	
+	private List<Design> getDesignReverseOrderList() {
+		return reverseSort(designRepository.findAll().iterator());
+	}
+	
+	private Iterable<Wp_posts> getWp_postsSubList(int postsLength) {		
+		List<Wp_posts> list = reverseSort(wp_postsRepository.findAll().iterator());
+		
+		List<Wp_posts> result = new ArrayList<>();
+		Iterator<Wp_posts> it = list.iterator();
+		while(it.hasNext()) {
+			Wp_posts t = it.next();
+			if(t.getPost_status().equals("publish")) {
+				result.add(t);
+			}
+		}
+		return result.subList(0, postsLength);
+	}
+	
+	private String getWp_postsImgUrl(Wp_posts post) {
+		Iterator<Wp_posts> allPostIt = wp_postsRepository.findAll().iterator();
+		while(allPostIt.hasNext()) {
+			Wp_posts t = allPostIt.next();
+			if(post.getID().equals(t.getPost_parent()) && t.getPost_mime_type().equals("image/jpeg")) {
+				return t.getGuid();
+			}
+		}
+		return "";
+	}
+	
+	private Biography getBiography() {
+		return biographyRepository.findById(1).orElse(null);
+	}
+	
+	private Photo getBiographyPhoto() {
+		return photoRepository.findById(1).orElse(null);
+	}
+	
+	private Iterable<Photo> getBiographyPhotoList() {
+		return photoRepository.findAll();
+	}
+	
+	private Design getLatestDesign() {
+		return getDesignReverseOrderList().get(0);
+	}
+	
+	private String getScheduleUpdateDate() {
+		Schedule scheduleIdOne = scheduleRepository.findById(1).orElse(null);
+		if(scheduleIdOne == null) {
+			return "";
+		}
+		return scheduleIdOne.getUpdatedate();
+	}
+	
+	private List<Schedule> getScheduleList() {		
+		List<Schedule> result = new ArrayList<>();
+		LocalDate currentDate = LocalDate.now();
+		Iterator<Schedule> it = scheduleRepository.findAll().iterator();
+		while(it.hasNext()) {
+			Schedule t = it.next();
+			String dStr = t.getDate();
+			String[] liStr = dStr.split("-");
+		    LocalDate scheDate = LocalDate.of(
+		      Integer.parseInt(liStr[0]),
+		      Integer.parseInt(liStr[1]),
+		      Integer.parseInt(liStr[2])
+		      );
+		    if(scheDate.compareTo(currentDate) >= 0) {
+		    	result.add(t);
+		    }
+		}
+		return result;
+	}
+	
+	private Schedule getCurrentSchedule() {
+		return getScheduleList().iterator().next();
+	}
+	
+	private List<Discography> getDiscographyReverseOrderList() {
+		return reverseSort(discographyRepository.findAll().iterator());
+	}
+	
+	private Discography getLatestDiscography() {
+		return getDiscographyReverseOrderList().iterator().next();
+	}
+	
+	private String getDiscographyUpdateDate() {
+		Discography discographyIdOne = discographyRepository.findById(1).orElse(null);
+		if(discographyIdOne == null) {
+			return "";
+		}
+		return discographyIdOne.getUpdatedate();
+	}
+	
+	private Iterable<Place> getPlaceList() {
+		return placeRepository.findAll();
+	}
+	
+	private Iterable<Player> getPlayerList() {
+		return playerRepository.findAll();
 	}
 }

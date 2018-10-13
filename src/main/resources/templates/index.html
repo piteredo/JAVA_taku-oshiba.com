@@ -18,7 +18,7 @@
   <article class="design">
   	<div class="header">
       <h2>DESIGN</h2>
-      <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${designUpdatedate}"></time></p>
+      <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${designUpdateDate}"></time></p>
     </div>
     <ul class="slider">
       <li th:each="design: ${designList}">
@@ -44,7 +44,7 @@
       <li th:each="u: ${updates}">
         <article>
           <div>
-            <h3 th:text="${u.title}"></h3>
+            <h3><a th:text="${u.title}" th:href="${u.url}"></a></h3>
             <p class="updated-date">
               <i class="fas fa-sync"></i>
               <time th:text="${u.updateDate}"></time>
@@ -55,7 +55,7 @@
              . . . .&nbsp;<a th:href="${u.url}">VIEW ALL&nbsp;<i class="fas fa-caret-square-right"></i></a>
           </p>
           <p>
-            <img th:data-original="${u.imgSrc}" src="img/dummy_loader80x80.gif" th:alt="${u.imgSrc}" class="lazy">
+            <a th:href="${u.url}"><img th:data-original="${u.imgSrc}" src="img/dummy_loader80x80.gif" th:alt="${u.imgSrc}" class="lazy"></a>
           </p>
         </article>
       </li>
