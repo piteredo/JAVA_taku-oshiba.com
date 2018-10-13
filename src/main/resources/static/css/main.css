@@ -152,7 +152,7 @@ header nav ul {
     display: block;
     position: absolute;
     pointer-events: none;
-    top: 70.564px; /*55.224+15.34*/
+    top: 45px;
 	left: 50%;
 	-webkit-transform: translate(-50%,0);
 	-moz-transform: translate(-50%,0);
