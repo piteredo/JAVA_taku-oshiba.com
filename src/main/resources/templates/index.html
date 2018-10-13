@@ -55,7 +55,7 @@
              . . . .&nbsp;<a th:href="${u.url}">VIEW ALL&nbsp;<i class="fas fa-caret-square-right"></i></a>
           </p>
           <p>
-            <img th:src="${u.imgSrc}" th:alt="${u.imgSrc}">
+            <img th:data-original="${u.imgSrc}" src="img/dummy_loader80x80.gif" th:alt="${u.imgSrc}" class="lazy">
           </p>
         </article>
       </li>

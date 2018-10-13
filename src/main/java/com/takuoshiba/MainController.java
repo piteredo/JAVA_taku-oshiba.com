@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 
 @Controller
 public class MainController {
@@ -61,24 +62,6 @@ public class MainController {
 		
 		List<Updates> updateList = new ArrayList<>();
 		
-		/*Biography bi = biographyRepository.findAll().iterator().next();
-		Photo ph = photoRepository.findAll().iterator().next();		
-		updateList.add(new Updates(bi.getJaname(),	bi.getUpdatedate(),	bi.getJatextplane(), "bio/"+ph.getSrc()));
-		
-		Design de = designRepository.findAll().iterator().next();	
-		updateList.add(new Updates("デザイン",	de.getUpdatedate(),	"デザイン更新しました。",	"design/"+de.getSrc()));
-		
-		Schedule sc = scheduleRepository.findAll().iterator().next();	
-		updateList.add(new Updates(sc.getTitle(), sc.getUpdatedate(), "ライブ詳細", "design/"+de.getSrc()));
-		
-		Wp_posts wp = wp_postsRepository.findAll().iterator().next();
-		updateList.add(new Updates(wp.getPost_title(), wp.getPost_date(), wp.getPost_content(), wp.getImgsource()));*/
-		
-		//updateList.add(new Updates("更新履歴タイトルのテスト", "2018-10-09", "更新履歴の本文表示テスト中", "design/071220metro9"));
-		
-		//Wp_posts wp = wp_postsRepository.findAll().iterator().next();
-		//updateList.add(new Updates(wp.getPost_title(), wp.getPost_date(), wp.getPost_content(), wp.getImgsource()));
-		
 		
 		Iterable<Wp_posts> wp_postsList = wp_postsRepository.findAll();
 		List<Wp_posts> tempList2 = new ArrayList<>();
@@ -106,6 +89,45 @@ public class MainController {
 			updateList.add(new Updates(s.getPost_title(), s.getPost_date(), s.getPost_content(), url, s.getGuid()));
 			counter++;
 		}
+		
+		Biography bi = biographyRepository.findAll().iterator().next();
+		Photo ph = photoRepository.findAll().iterator().next();		
+		updateList.add(new Updates(bi.getJaname(),	bi.getUpdatedate(),	bi.getJatextplane(), "https://taku-oshiba.com/img/bio/"+ph.getSrc()+".jpg", "https://taku-oshiba.com/biography"));
+		
+		Design de = tempList.iterator().next();	
+		updateList.add(new Updates("デザイン",	designUpdatedate,	"デザイン更新しました。",	"https://taku-oshiba.com/img/design/"+de.getSrc()+".jpg", "https://taku-oshiba.com/design"));
+		
+		String updatedate = "";
+		Iterable<Schedule> scheduleListAll = scheduleRepository.findAll();
+		List<Schedule> scheduleListTemp = new ArrayList<>();
+		LocalDate currentDate = LocalDate.now();
+		Iterator<Schedule> it9 = scheduleListAll.iterator();
+		while(it9.hasNext()) {
+			Schedule s = it9.next();		
+			String dStr = s.getDate();
+			String[] liStr = dStr.split("-");
+		    LocalDate scheDate = LocalDate.of(
+		      Integer.parseInt(liStr[0]),
+		      Integer.parseInt(liStr[1]),
+		      Integer.parseInt(liStr[2])
+		      );
+		    if(s.getUpdatedate() != null) {
+		    	updatedate = s.getUpdatedate();
+		    }		    
+		    if(scheDate.compareTo(currentDate) >= 0) {
+		    	scheduleListTemp.add(s);
+		    }
+		}
+		Iterable<Schedule> scheduleList = scheduleListTemp;
+		Schedule sc = scheduleList.iterator().next();
+		updateList.add(new Updates("次回出演予定", updatedate, sc.getAll(), "https://taku-oshiba.com/img/design/"+sc.getImgurl(), "https://taku-oshiba.com/schedule"));
+		
+		
+		Collections.sort(updateList);
+		
+		
+		
+		
 		
 		mav.addObject("updates", updateList);
 		

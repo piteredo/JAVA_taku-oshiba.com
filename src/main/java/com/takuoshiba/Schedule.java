@@ -91,10 +91,19 @@ public class Schedule {
 	}
 	
 	public String getImgurl() {
-		return imgurl;
+		String result = imgurl;
+		if(imgurl.equals("none")) {
+			result = "no-image.png";
+		}
+		return result;
 	}
 	
 	public String getUpdatedate() {
 		return updatedate;
+	}
+	
+	public String getAll() {
+		String result = date + this.getDay() + " " + starttime + " " + title;
+		return result;
 	}
 }
