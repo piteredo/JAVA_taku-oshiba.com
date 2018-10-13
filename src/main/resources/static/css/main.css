@@ -153,7 +153,13 @@ header nav ul {
     position: absolute;
     pointer-events: none;
     top: 70.564px; /*55.224+15.34*/
-    left: 45%;
+	left: 50%;
+	-webkit-transform: translate(-50%,0);
+	-moz-transform: translate(-50%,0);
+	-ms-transform: translate(-50%,0);
+	-o-transform: translate(-50%,0);
+	transform: translate(-50%,0);
+	text-align: center;
     z-index: 1000;
   }
 }
@@ -233,7 +239,7 @@ main .header {
 /*----------------------------- MAIN.INDEX -----------------------------*/
 
 
-main#index .movie div {
+main#index .movie section {
 	border: solid 1px #AAA;
 	box-sizing: border-box;
 	padding: 16px;
@@ -323,6 +329,37 @@ main#index .updates img {
   height: 300px;
   object-fit: cover;
   object-position: center 30%;
+}
+
+
+
+/*----------------------------- MAIN.YOUTUBE (INDEX) -----------------------------*/
+
+
+main#index .movie section {
+	/*orverride MAIN.INDEX*/
+	position: relative;
+}
+
+main#index .movie .youtube_thumb img {
+	height: 300px;
+  	object-fit: cover;
+  	object-position: center 30%;
+  	cursor: pointer;
+}
+
+main#index .movie section .fa-play-circle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	font-size: 80px;
+	color: #FFF;
+	pointer-events: none;
 }
 
 

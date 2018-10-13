@@ -8,10 +8,11 @@
  
 
   <article class="movie">
-    <div th:each="youtube: ${youtubeList}"><iframe width="560" height="315"
-        th:src="|https://www.youtube.com/embed/${youtube.src}?rel=0|"
-        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
+    <section th:each="youtube: ${youtubeList}">
+    	<iframe width="560" height="315"
+	        th:src="|https://www.youtube.com/embed/${youtube.src}?rel=0|"
+	        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </section>
   </article>
 
   <article class="design">
