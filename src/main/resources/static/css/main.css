@@ -9,10 +9,11 @@ html {
   font-size: 62.5%; /*10px(root)*/
   overflow-y: scroll;
 }
- 
+
 img,
 iframe {
   width: 100%;
+  -ms-interpolation-mode: bicubic;
 }
 
 a {
@@ -37,11 +38,11 @@ header {
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.9);
   top: 0;
-  
+
   left: 0;
-  width: 90%;  
+  width: 90%;
   padding: 15.34px 5%; /*767px*2%*/
-  
+
   z-index: 20;
 }
 @media screen and (min-width: 768px) {
@@ -63,7 +64,7 @@ header {
 header .logo {
   width: 241.605px; /*767px*90%*35%*/
   height: 100%;
-    
+
   /*border: 1px solid #000; box-sizing: border-box; --- FOR_DEBUG */
 }
 @media screen and (min-width: 768px) {
@@ -87,7 +88,7 @@ header nav {
   width: auto;
   font-family: 'Ubuntu Condensed', sans-serif;
   font-size: 3rem;
-  
+
   /*border: 1px solid #000; box-sizing: border-box; --- FOR_DEBUG */
 }
 @media screen and (min-width: 768px) {
@@ -120,20 +121,20 @@ header nav #ham-menu-cb {
 
 header nav #ham-menu-icon {
   display: none;
-  
+
   position: relative;
   cursor: pointer;
   border: solid 1px #000;
   width: 55.224px; /*logo700:160=241.605:Xpx*/
   height: 55.224px;
   line-height: 55.224px; /*vertical*/
-  text-align: center;  
-  font-size: 3rem; 
-  z-index: 1000; 
+  text-align: center;
+  font-size: 3rem;
+  z-index: 1000;
 }
 @media screen and (max-width: 767px) {
   header nav #ham-menu-icon {
-    display: block;    
+    display: block;
   }
 }
 
@@ -146,7 +147,7 @@ header nav ul {
   header nav ul {
     display: inline; /*default*/
   }
-  
+
   header nav div.ham-menu {
     opacity: 0;
     display: block;
@@ -195,42 +196,42 @@ header nav #ham-menu-cb:checked ~ #ham-menu-bg {
 /*----------------------------- MAIN.ALL_PAGES -----------------------------*/
 
 
-main {
+.main {
   width: auto;
   margin: 191.5px 5% 114.9px; /*766*25%*/ /*766*15%*/
 }
 @media screen and (min-width: 768px) {
-  main {
+  .main {
     margin-top: 25%;
     margin-bottom: 15%;
   }
 }
 @media screen and (min-width: 960px) {
-  main {
+  .main {
     width: 864px; /*bodyWidth*/
     margin: 240px auto 144px; /*960*25%*/ /*960*15%*/
   }
 }
 
 
-main .header h2 {
+.main .header h2 {
   font-size: 3.2rem;
   font-family: 'Ubuntu Condensed', sans-serif;
   font-weight: bold; /*iphone効かないかも？*/
   margin-bottom: 6px;
 }
 
-main .header .updated-date .fas {
+.main .header .updated-date .fas {
   font-size: 1.0rem;
   letter-spacing: 0.3rem;
 }
 
-main .header .updated-date {
+.main .header .updated-date {
   font-size: 1.1rem;
   color: #777;
 }
 
-main .header {
+.main .header {
   margin-bottom: 26px;
 }
 
@@ -239,102 +240,138 @@ main .header {
 /*----------------------------- MAIN.INDEX -----------------------------*/
 
 
-main#index .movie section {
+.main #index .movie section {
 	border: solid 1px #AAA;
 	box-sizing: border-box;
 	padding: 16px;
 	margin-bottom: 4%;
 }
 
-main#index .movie div:last-child {
+.main #index .movie div:last-child {
 	margin-bottom: 0;
 }
 
-main#index .movie {
+.main #index .movie {
 	margin-bottom: 12%;
 }
 
-main#index .slider {
+.main #index .slider {
 	margin-bottom: 10px;
 }
 
-main#index .design .footer_nav {
+.main #index .design .footer_nav {
 	position: relative;
 	text-align: right;
 }
 
-main#index .design {
+.main #index .design {
 	margin-bottom: 12%;
 }
 
-main#index .updates ul {
+.main #index .updates ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
 
-main#index .updates li {
+.main #index .updates li {
   width: 100%;
   border: solid 1px #AAA;
-  box-sizing: border-box;  
+  box-sizing: border-box;
   padding: 16px;
-  
+
   margin-top: 4%; /*！上向きマージン(footerとの距離維持のため)*/
 }
 @media screen and (min-width:768px){
-  main#index .updates li {
+  .main #index .updates li {
     width: 48%;
   }
 }
 
 
-main#index .updates li:first-child {  
+.main #index .updates li:first-child {
   margin-top: 0; /*１カラムのときは １番目の上向きマージンのみキャンセル*/
 }
 @media screen and (min-width:768px){
-  main#index .updates li:nth-child(2) {  
+  .main #index .updates li:nth-child(2) {
     margin-top: 0; /*２カラムのときは２番目もキャンセルする*/
   }
 }
 
 
-main#index .updates h3 {
+.main #index .updates h3 {
   font-size: 2rem;
-  font-weight: bold;	
+  font-weight: bold;
   margin-bottom: 10px;
   line-height: 24px;
 }
 
-main#index .updates h3 a {  
+.main #index .updates h3 a {
   /*negation of root*/
   text-decoration : none;
   color: #000;
 }
 
-main#index .updates .updated-date {
+.main #index .updates .updated-date {
   /*same as other update_dates*/
   font-size: 1.1rem;
-  color: #777;	
+  color: #777;
   margin-bottom: 14px;
 }
 
-main#index .updates .sentence {
+.main #index .updates .sentence {
   display: block;
   overflow: hidden;
   line-height: 1.8;
   height: 7.2em; /* 1em*行数(4)*line-height */
 }
 
-main#index .updates .footer_nav {
-  line-height: 1.8;	
+.main #index .updates .footer_nav {
+  line-height: 1.8;
   margin-bottom: 14px;
 }
 
-main#index .updates img {
+
+/*for IE & Edge*/
+.main #index .updates .update_img {
+  position: relative;
   height: 300px;
-  object-fit: cover;
-  object-position: center 30%;
+  display: block;
+  overflow: hidden;
+}
+/*for IE & Edge*/
+.main #index .updates img {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  width: 100%;
+  height: auto;
+
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+/*for Othres*/
+@supports (object-fit: cover) {
+  .main #index .updates img {
+    /* negative */
+    position: static;
+    top: 0;
+    left: 0;
+    -ms-transform: none;
+    -moz-transform: none;
+    -webkit-transform: none;
+    transform: none;
+    min-width: inherit;
+
+    /* main */
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center 30%;
+  }
 }
 
 
@@ -342,19 +379,56 @@ main#index .updates img {
 /*----------------------------- MAIN.YOUTUBE (INDEX) -----------------------------*/
 
 
-main#index .movie section {
+.main #index .movie section {
 	/*orverride MAIN.INDEX*/
 	position: relative;
 }
 
-main#index .movie .youtube_thumb img {
-	height: 300px;
+
+/*for IE & Edge*/
+.main #index .movie .youtube_thumb {
+  position: relative;
+  height: 315px;
+  display: block;
+  overflow: hidden;
+}
+/*for IE & Edge*/
+.main #index .movie .youtube_thumb img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: auto;
+
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+
+  cursor: pointer;
+}
+/*for Othres*/
+@supports (object-fit: cover) {
+  .main #index .movie .youtube_thumb img {
+    /* negative */
+    position: static;
+    top: 0;
+    left: 0;
+    -ms-transform: none;
+    -moz-transform: none;
+    -webkit-transform: none;
+    transform: none;
+    min-width: inherit;
+
+    /* main */
+    height: 315px;
   	object-fit: cover;
   	object-position: center 30%;
-  	cursor: pointer;
+  }
 }
 
-main#index .movie section .fa-play-circle {
+
+.main #index .movie section .fa-play-circle {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -366,6 +440,8 @@ main#index .movie section .fa-play-circle {
 	font-size: 80px;
 	color: #FFF;
 	pointer-events: none;
+
+  z-index: 4;
 }
 
 
@@ -373,13 +449,13 @@ main#index .movie section .fa-play-circle {
 /*----------------------------- MAIN.SLIDER (INDEX, BIO) -----------------------------*/
 
 
-main#index .slider li,
-main#biography .slider li {
+.main #index .slider li,
+.main #biography .slider li {
 	height: 300px;
 }
 
-main#index .slider .prev,
-main#biography .slider .prev {
+.main #index .slider .prev,
+.main #biography .slider .prev {
 	position: absolute;
 	left: -3%;
 	top: 130px;
@@ -387,8 +463,8 @@ main#biography .slider .prev {
 	font-size: 2rem;
 }
 
-main#index .slider .next,
-main#biography .slider .next {
+.main #index .slider .next,
+.main #biography .slider .next {
 	position: absolute;
 	right: -3%;
 	top: 130px;
@@ -396,16 +472,55 @@ main#biography .slider .next {
 	font-size: 2rem;
 }
 
-main#index .slider img,
-main#biography .slider img {
-	border: solid 1px #AAA;
-	box-sizing: border-box;
-	padding: 2%;
-	height: 100%;
-	object-fit: cover;
-	object-position: center 40%;
-	margin-right: 5%;
+
+/*for IE & Edge*/
+.main #index .slider li,
+.main #biography .slider li {
+  position: relative;
+  height: 315px;
+  display: block;
+  overflow: hidden;
 }
+/*for IE & Edge*/
+.main #index .slider img,
+.main #biography .slider img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 100%;
+
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+/*for Othres*/
+@supports (object-fit: cover) {
+  .main #index .slider img,
+  .main #biography .slider img {
+    /* negative */
+    position: static;
+    top: 0;
+    left: 0;
+    -ms-transform: none;
+    -moz-transform: none;
+    -webkit-transform: none;
+    transform: none;
+    min-width: inherit;
+
+    /* main */
+    border: solid 1px #AAA;
+  	box-sizing: border-box;
+  	padding: 2%;
+    width: 100%;
+  	height: 100%;
+  	object-fit: cover;
+  	object-position: center 40%;
+  	margin-right: 5%;
+  }
+}
+
 
 .slider .slick-slide  {
     margin-left: 4px;
@@ -416,24 +531,24 @@ main#biography .slider img {
 /*----------------------------- MAIN.BIOGRAPHY -----------------------------*/
 
 
-main#biography .slider {
+.main #biography .slider {
   margin-bottom: 60px;
 }
 
-main#biography section:first-child {
+.main #biography section:first-child {
   border-bottom: solid 1px #CCC;
   padding-bottom: 60px;
 }
 
-main#biography section:last-child {
+.main #biography section:last-child {
   padding-top: 45px;
 }
 
-main#biography .sentence {
+.main #biography .sentence {
   line-height: 1.6;
 }
 
-main#biography .artist-name {
+.main #biography .artist-name {
   font-weight: bold;
 }
 
@@ -442,27 +557,27 @@ main#biography .artist-name {
 /*----------------------------- MAIN.SCHEDULE -----------------------------*/
 
 
-main#schedule .date {
+.main #schedule .date {
   font-size: 1.8rem;
 }
 
-main#schedule h3 {
+.main #schedule h3 {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 13px;
   line-height: 20px;
 }
 
-main#schedule section p,
-main#schedule ul li {
+.main #schedule section p,
+.main #schedule ul li {
   margin-bottom: 12px;
 }
 
-main#schedule section {
+.main #schedule section {
   margin-bottom: 100px;
 }
 
-main#schedule section:last-child {
+.main #schedule section:last-child {
   margin-bottom: 0;
 }
 
@@ -471,18 +586,18 @@ main#schedule section:last-child {
 /*----------------------------- MAIN.LARGE_IMG (SCHE, BLOG, DISCO) -----------------------------*/
 
 
-main#schedule img,
-main#blog img,
-main#discography img {
+.main #schedule img,
+.main #blog img,
+.main #discography img {
   border: solid 1px #AAA;
   box-sizing: border-box;
   padding: 8px;
   width: 100%;
 }
 @media screen and (min-width:480px) {
-  main#schedule img,
-  main#blog img,
-  main#discography img {
+  .main #schedule img,
+  .main #blog img,
+  .main #discography img {
     width: 474px;
   }
 }
@@ -492,53 +607,88 @@ main#discography img {
 /*----------------------------- MAIN.DESIGN -----------------------------*/
 
 
-main#design ul {
+.main #design ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-main#design li {
+.main #design li {
   width: 46%;
   margin-bottom: 9%;
 }
 @media screen and (min-width: 600px){
-  main#design li {
+  .main #design li {
     width: 29%;
     margin-bottom: 7%;
   }
-  
-  main#design li:nth-child(3n+2):last-child {
+
+  .main #design li:nth-child(3n+2):last-child {
     margin-right: 35.5%;
   }
 }
 @media screen and (min-width: 768px){
-  main#design li {
+  .main #design li {
     width: 21%;
     margin-bottom: 6%;
   }
-  
-  main#design li:nth-child(3n+2):last-child {
+
+  .main #design li:nth-child(3n+2):last-child {
     margin-right: 0;
   }
-  
-  main#design li:nth-child(4n+2):last-child {
+
+  .main #design li:nth-child(4n+2):last-child {
     margin-right: 52.8%;
   }
-  
-  main#design li:nth-child(4n+3):last-child {
+
+  .main #design li:nth-child(4n+3):last-child {
     margin-right: 26.4%;
   }
 }
 
 
-main#design li img {
-  border: solid 1px #AAA;
-  box-sizing: border-box;
-  object-fit: cover;
-  padding: 4px;
-  width: 100%;
+/*for IE & Edge*/
+.main #design li {
+  position: relative;
+  height: 20vh;
+  display: block;
+  overflow: hidden;
+}
+/*for IE & Edge*/
+.main #design li img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
   height: 100%;
+
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+/*for Othres*/
+@supports (object-fit: cover) {
+  .main #design li img {
+    /* negative */
+    position: static;
+    top: 0;
+    left: 0;
+    -ms-transform: none;
+    -moz-transform: none;
+    -webkit-transform: none;
+    transform: none;
+    min-width: inherit;
+
+    /* main */
+    object-fit: cover;
+    object-position: center top;
+    width: 100%;
+
+    padding: 4px;
+    border: solid 1px #AAA;
+    box-sizing: border-box;
+  }
 }
 
 
@@ -546,30 +696,30 @@ main#design li img {
 /*----------------------------- MAIN.BLOG -----------------------------*/
 
 
-main#blog .header h2 a,
-main#blog section h3 a {
+.main #blog .header h2 a,
+.main #blog section h3 a {
   /*negation of root*/
   text-decoration : none;
   color: #000;
 }
 
-main#blog section h3 {
+.main #blog section h3 {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 13px;
   line-height: 20px
 }
 
-main#blog section p {
+.main #blog section p {
   margin-bottom: 12px;
   line-height: 1.6;
 }
 
-main#blog section {
+.main #blog section {
   margin-bottom: 100px;
 }
 
-main#blog img {
+.main #blog img {
   height: auto;
 }
 
@@ -578,33 +728,33 @@ main#blog img {
 /*----------------------------- MAIN.DISCOGRAPHY -----------------------------*/
 
 
-main#discography h3 {
+.main #discography h3 {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 13px;
   line-height: 20px
 }
 
-main#discography .fa-amazon {
+.main #discography .fa-amazon {
   font-size: 3rem;
 }
 
-main#discography .fa-amazon,
-main#discography ul,
-main#discography section p {
+.main #discography .fa-amazon,
+.main #discography ul,
+.main #discography section p {
   margin-bottom: 12px;
 }
 
-main#discography section p,
-main#discography li {
+.main #discography section p,
+.main #discography li {
   line-height: 2.0;
 }
 
-main#discography section {
+.main #discography section {
   margin-bottom: 100px;
 }
 
-main#discography section:last-child {
+.main #discography section:last-child {
   margin-bottom: 0;
 }
 
@@ -630,17 +780,17 @@ footer nav {
   }
 }
 
-footer nav .main li {
+footer nav .footer_main li {
   font-size: 1.6rem;
   font-weight: bold; /*iphone効かないかも？*/
   margin-bottom: 30px;
 }
 
-footer nav .main li:last-child {
+footer nav .footer_main li:last-child {
   margin-bottom: 0;
 }
 
-footer nav .main {
+footer nav .footer_main {
   margin-bottom: 40px;
 }
 

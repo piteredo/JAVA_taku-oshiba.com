@@ -17,3 +17,5 @@ gradlew.bat
 mvnw
 mvnw.cmd
 .ftpconfig
+.gradle/
+bin/

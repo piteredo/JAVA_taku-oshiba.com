@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr" xmlns:th="http://www.thymeleaf.org">
-  
+
   	<header th:replace="/header.html::header('noindex, nofollow')"></header>
-    
-    <main id="discography">
-	  <article>
-        <div class="header">
-          <h2>DISCOGRAPHY</h2>
-          <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${updateDate}"></time></p>
-        </div>
-        <section th:each="disc : ${discographyList}">
-          <h3 th:text="${disc.title}"></h3>
-          <p><img th:data-original="|img/design/${disc.imgurl}.jpg|" th:alt="${disc.imgurl}" src="img/dummy_loader80x80.gif" class="lazy"></p>
-          <div class="main">
-            <a th:href="|https://www.amazon.co.jp/dp/${disc.amazonurl}|" target="_blank"><i class="fab fa-amazon"></i></a>
-            <ul>
-              <li th:each="performerid : ${disc.performeridlist}" th:text="|${playerList[performerid].name}&nbsp;(${playerList[performerid].instrument})|"></li>
-            </ul>
-            <p th:utext="${disc.info}"></p>
-            <p th:utext="${disc.songlist}"></p>
+
+    <div class="main">
+      <main id="discography">
+  	  <article>
+          <div class="header">
+            <h2>DISCOGRAPHY</h2>
+            <p class="updated-date"><i class="fas fa-sync"></i><time th:text="${updateDate}"></time></p>
           </div>
-        </section>
-      </article>
-    </main>
-    
+          <section th:each="disc : ${discographyList}">
+            <h3 th:text="${disc.title}"></h3>
+            <p><img th:data-original="|img/design/${disc.imgurl}.jpg|" th:alt="${disc.imgurl}" src="img/dummy_loader80x80.gif" class="lazy"></p>
+            <div>
+              <a th:href="|https://www.amazon.co.jp/dp/${disc.amazonurl}|" target="_blank"><i class="fab fa-amazon"></i></a>
+              <ul>
+                <li th:each="performerid : ${disc.performeridlist}" th:text="|${playerList[performerid].name}&nbsp;(${playerList[performerid].instrument})|"></li>
+              </ul>
+              <p th:utext="${disc.info}"></p>
+              <p th:utext="${disc.songlist}"></p>
+            </div>
+          </section>
+        </article>
+      </main>
+    </div>
+
     <footer th:replace="/footer.html::footer"></footer>
-    
+
 </html>
